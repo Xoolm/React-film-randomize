@@ -1,0 +1,102 @@
+{
+  "films": [
+    {
+      "title": "Фильм #1",
+      "author": "Пользователь #1",
+      "id": 7,
+      "value": 1,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #2",
+      "author": "Пользователь #1",
+      "id": 8,
+      "value": 1,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #3",
+      "author": "Пользователь #1",
+      "id": 9,
+      "value": 1,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #4",
+      "author": "Пользователь #1",
+      "id": 12,
+      "value": 1,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #5",
+      "author": "Пользователь #2",
+      "value": 1,
+      "id": 13,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #6",
+      "author": "Пользователь #2",
+      "value": 1,
+      "id": 14,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #7",
+      "author": "Пользователь #2",
+      "value": 1,
+      "id": 15,
+      "chance": 1
+    },
+    {
+      "title": "Фильм #8",
+      "author": "Пользователь #2",
+      "value": 1,
+      "chance": 1,
+      "id": 16
+    },
+    {
+      "title": "Фильм #9",
+      "author": "Пользователь #3",
+      "value": 1,
+      "chance": 1,
+      "id": 17
+    },
+    {
+      "title": "Фильм #10",
+      "author": "Пользователь #3",
+      "value": 1,
+      "chance": 1,
+      "id": 18
+    },
+    {
+      "title": "king",
+      "author": "king",
+      "value": 10,
+      "chance": 1,
+      "id": 19
+    },
+    {
+      "title": "eee",
+      "author": "ee",
+      "value": 2,
+      "chance": 1,
+      "id": 20
+    },
+    {
+      "title": "ee",
+      "author": "ee",
+      "value": 2,
+      "chance": 1,
+      "id": 21
+    },
+    {
+      "title": "qqq",
+      "author": "qqq",
+      "value": 2,
+      "chance": 1,
+      "id": 22
+    }
+  ]
+}

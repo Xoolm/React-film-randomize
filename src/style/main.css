@@ -1,0 +1,36 @@
+.filmCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 15px;
+  height: 180px;
+  width: 150px;
+  background: lightcoral;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+}
+
+.filmCard-enter-active {
+  opacity: 0;
+}
+
+.filmCard-enter-done {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.filmCard-exit {
+  opacity: 1;
+}
+
+.filmCard-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}/*# sourceMappingURL=main.css.map */

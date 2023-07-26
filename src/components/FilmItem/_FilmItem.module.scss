@@ -1,0 +1,27 @@
+.filmWrapp {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  .filmWrapp__author {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0px 0px 30px;
+  }
+  .filmWrapp__title {
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .filmWrapp__chance {
+    padding: 20px 0 20px;
+  }
+  .filmWrapp__remove {
+    position: absolute;
+    padding: 10px 10px;
+    top: 0;
+    right: 0;
+  }
+}
