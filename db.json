@@ -1,102 +1,161 @@
 {
+  "Users": [
+    {
+      "name": "Андрей",
+      "id": 1
+    },
+    {
+      "name": "Кристина",
+      "id": 2
+    },
+    {
+      "name": "Катя",
+      "id": 3
+    },
+    {
+      "name": "Артем",
+      "id": 4
+    }
+  ],
   "films": [
     {
-      "title": "Фильм #1",
-      "author": "Пользователь #1",
-      "id": 7,
-      "value": 1,
-      "chance": 1
+      "userId": 1,
+      "title": "Солнцестояние",
+      "value": 3,
+      "chance": 15,
+      "id": 24
     },
     {
-      "title": "Фильм #2",
-      "author": "Пользователь #1",
-      "id": 8,
-      "value": 1,
-      "chance": 1
+      "userId": 1,
+      "title": "Реинкарнация",
+      "value": 3,
+      "chance": 5,
+      "id": 25
     },
     {
-      "title": "Фильм #3",
-      "author": "Пользователь #1",
-      "id": 9,
-      "value": 1,
-      "chance": 1
+      "userId": 1,
+      "title": "Пила",
+      "value": 3,
+      "chance": 5,
+      "id": 26
     },
     {
-      "title": "Фильм #4",
-      "author": "Пользователь #1",
-      "id": 12,
-      "value": 1,
-      "chance": 1
+      "userId": 1,
+      "title": "Черная дыра",
+      "value": 3,
+      "chance": 15,
+      "id": 28
     },
     {
-      "title": "Фильм #5",
-      "author": "Пользователь #2",
-      "value": 1,
-      "id": 13,
-      "chance": 1
-    },
-    {
-      "title": "Фильм #6",
-      "author": "Пользователь #2",
-      "value": 1,
-      "id": 14,
-      "chance": 1
-    },
-    {
-      "title": "Фильм #7",
-      "author": "Пользователь #2",
-      "value": 1,
-      "id": 15,
-      "chance": 1
-    },
-    {
-      "title": "Фильм #8",
-      "author": "Пользователь #2",
-      "value": 1,
-      "chance": 1,
-      "id": 16
-    },
-    {
-      "title": "Фильм #9",
-      "author": "Пользователь #3",
-      "value": 1,
-      "chance": 1,
-      "id": 17
-    },
-    {
-      "title": "Фильм #10",
-      "author": "Пользователь #3",
-      "value": 1,
-      "chance": 1,
-      "id": 18
-    },
-    {
-      "title": "king",
-      "author": "king",
-      "value": 10,
-      "chance": 1,
+      "userId": 2,
+      "title": "Меню",
+      "value": 3,
+      "chance": 5,
       "id": 19
     },
     {
-      "title": "eee",
-      "author": "ee",
-      "value": 2,
-      "chance": 1,
+      "userId": 2,
+      "title": "Завтрак у тиффани",
+      "value": 3,
+      "chance": 5,
       "id": 20
     },
     {
-      "title": "ee",
-      "author": "ee",
-      "value": 2,
-      "chance": 1,
+      "userId": 2,
+      "title": "Ешь молись люби",
+      "value": 3,
+      "chance": 6,
       "id": 21
     },
     {
-      "title": "qqq",
-      "author": "qqq",
-      "value": 2,
-      "chance": 1,
+      "userId": 2,
+      "title": "Вассаби",
+      "value": 3,
+      "chance": 6,
       "id": 22
+    },
+    {
+      "userId": 2,
+      "title": "Земляничная поляна",
+      "value": 3,
+      "chance": 14,
+      "id": 23
+    },
+    {
+      "userId": 3,
+      "title": "Как приручить дракона",
+      "value": 3,
+      "id": 14,
+      "chance": 5
+    },
+    {
+      "userId": 3,
+      "title": "Подводная братва",
+      "value": 3,
+      "id": 15,
+      "chance": 7
+    },
+    {
+      "userId": 3,
+      "title": "Пикачу",
+      "value": 3,
+      "chance": 7,
+      "id": 16
+    },
+    {
+      "userId": 3,
+      "title": "Звездная пыль",
+      "value": 3,
+      "chance": 8,
+      "id": 17
+    },
+    {
+      "userId": 3,
+      "title": "Шрек 2",
+      "value": 1,
+      "chance": 5,
+      "id": 18
+    },
+    {
+      "userId": 4,
+      "title": "Охота на монстра",
+      "value": 3,
+      "chance": 5,
+      "id": 29
+    },
+    {
+      "userId": 4,
+      "title": "Умри но не сейчас",
+      "value": 3,
+      "chance": 9,
+      "id": 30
+    },
+    {
+      "userId": 4,
+      "title": "Не время умирать",
+      "value": 3,
+      "chance": 9,
+      "id": 31
+    },
+    {
+      "userId": 4,
+      "title": "Я снова я и ирен",
+      "value": 3,
+      "chance": 10,
+      "id": 32
+    },
+    {
+      "userId": 4,
+      "title": "Дрожь земли",
+      "value": 3,
+      "chance": 11,
+      "id": 33
+    },
+    {
+      "userId": 1,
+      "title": "Дом который построил Джек",
+      "chance": null,
+      "id": 34
     }
   ]
 }

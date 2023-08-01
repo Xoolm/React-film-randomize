@@ -1,32 +1,11 @@
-.filmCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 30px 15px;
-  height: 180px;
-  width: 150px;
-  background: lightcoral;
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px black;
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Jura:wght@500&family=Play&family=Roboto:wght@300&family=Tektur&display=swap");
+.App {
+  font-family: "Tektur";
+  background: black;
 }
-
-.filmCard-enter-active {
-  opacity: 0;
-}
-
-.filmCard-enter-done {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.filmCard-exit {
-  opacity: 1;
-}
-
-.filmCard-exit-active {
-  opacity: 0;
-  transition: opacity 500ms ease-in;
+.App .container {
+  max-width: 1200px;
+  margin: 0 auto 0;
 }
 
 * {

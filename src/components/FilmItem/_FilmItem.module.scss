@@ -1,27 +1,197 @@
+@keyframes neon-1 {
+  from {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.92),
+      0 0 5px rgba(48, 163, 186, 0.34), 0 0 6px rgba(48, 163, 186, 0.52),
+      0 0 2px rgba(48, 163, 186, 0.92), 0 0 14px rgba(48, 163, 186, 0.78),
+      0 0 9px rgba(48, 163, 186, 0.92), inset 0 0 1.3rem rgb(48, 163, 186);
+  }
+  to {
+    box-shadow: 0 0 3px rgba(202, 228, 225, 0.98),
+      0 0 7px rgba(48, 163, 186, 0.42), 0 0 5px rgba(48, 163, 186, 0.58),
+      0 0 4px rgba(48, 163, 186, 0.84), 0 0 12px rgba(48, 163, 186, 0.88),
+      inset 0 0 1.3rem rgb(48, 163, 186);
+  }
+}
+.enterActive {
+  opacity: 0;
+}
+.enterDone {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+.exitActive {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
 .filmWrapp {
-  display: flex;
-  flex-direction: column;
   position: relative;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
-  .filmWrapp__author {
-    font-size: 18px;
-    font-weight: 600;
-    padding: 0px 0px 30px;
+  background: rgba(2, 40, 81, 0.5);
+  border-radius: 20px;
+  padding: 0px 15px 0px 0;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  .FormWrapper {
+    display: flex;
+    flex-direction: column;
+    .FormWrapper__form {
+      display: flex;
+      .inputTitle {
+        border: none;
+        animation: neon-1 0.09s ease-in-out infinite alternate;
+        margin: 10px 0;
+        background: #023770;
+        border-radius: 20px;
+        padding: 0px 85px 0px 0;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        min-width: 364px;
+        color: #7dddf9;
+        padding-left: 10px;
+        font-size: 19px;
+        font-weight: 400;
+        &::placeholder {
+          color: #7dddf9;
+          font-size: 19px;
+          font-weight: 400;
+          opacity: 0.5;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .FormWrapper__edit {
+        margin: 20px -79px;
+        width: 27px;
+        height: 27px;
+        min-height: 0px;
+        background-color: #93b4ca;
+        opacity: 0.5;
+        transition: 0.5s;
+        scale: 0.9;
+        &:hover {
+          scale: 1;
+          background-color: #93b4ca;
+          opacity: 1;
+          box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+            0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+            0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+            inset 0 0 1.3rem rgb(48, 163, 186);
+        }
+        .edit__icon {
+          color: #022851;
+        }
+      }
+      .success {
+        margin: 22px 0 0 -42px;
+        width: 27px;
+        height: 27px;
+        min-height: 0px;
+        z-index: 0;
+        background-color: #93b4ca;
+        opacity: 0.5;
+        transition: 0.5s;
+        scale: 0.9;
+        &:hover {
+          scale: 1;
+          background-color: #93b4ca;
+          opacity: 1;
+          box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+            0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+            0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+            inset 0 0 1.3rem rgb(48, 163, 186);
+        }
+      }
+      .FormWrapper__close {
+        margin: 20px 89px;
+        width: 27px;
+        height: 27px;
+        min-height: 0px;
+        background-color: #93b4ca;
+        opacity: 0.5;
+        transition: 0.5s;
+        scale: 0.9;
+        &:hover {
+          scale: 1;
+          background-color: #93b4ca;
+          opacity: 1;
+          box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+            0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+            0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+            inset 0 0 1.3rem rgb(48, 163, 186);
+        }
+        .close__icon {
+        }
+      }
+    }
+  }
+  .filmWrapp__value {
+    background-color: #93b4ca;
+    border-radius: 50%;
+    padding: 12px 17px;
   }
   .filmWrapp__title {
-    font-size: 30px;
-    text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
+    color: #7dddf9;
+    padding-left: 10px;
+    max-width: 280px;
+    font-size: 19px;
+    font-weight: 400;
   }
   .filmWrapp__chance {
-    padding: 20px 0 20px;
+    margin-left: auto;
+    margin-right: 5px;
   }
   .filmWrapp__remove {
-    position: absolute;
-    padding: 10px 10px;
-    top: 0;
-    right: 0;
+    z-index: 0;
+    width: 27px;
+    height: 27px;
+    min-height: 0px;
+    background-color: #93b4ca;
+    opacity: 0.5;
+    transition: 0.5s;
+    scale: 0.9;
+    &:hover {
+      scale: 1;
+      background-color: #93b4ca;
+      opacity: 1;
+      box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+        0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+        0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+        inset 0 0 1.3rem rgb(48, 163, 186);
+    }
+    .filmWrapp__remove__icon {
+      color: #022851;
+      width: 18px;
+    }
+  }
+
+  .edit {
+    margin-left: auto;
+    width: 27px;
+    height: 27px;
+    min-height: 0px;
+    float: right;
+    margin-right: 10px;
+    z-index: 0;
+    background-color: #93b4ca;
+    opacity: 0.5;
+    transition: 0.5s;
+    scale: 0.9;
+    &:hover {
+      scale: 1;
+      background-color: #93b4ca;
+      opacity: 1;
+      box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+        0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+        0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+        inset 0 0 1.3rem rgb(48, 163, 186);
+    }
+    .filmWrapp__edit__icon {
+      color: #022851;
+      width: 18px;
+    }
   }
 }

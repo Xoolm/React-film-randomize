@@ -1,15 +1,23 @@
-.templateWrapp {
+.FilmsChoisePage__background {
+  background-image: url("./image/Choise_Films_background.svg");
+  background-size: cover;
+  height: calc(100vh - 170px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  .filmsWrapp {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-  button {
-    margin-top: 15px;
-    width: 30%;
-    padding: 10px 15px;
+  .templateWrapp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .filmsWrapp {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    button {
+      margin-top: 15px;
+      width: 30%;
+      padding: 10px 15px;
+    }
   }
 }

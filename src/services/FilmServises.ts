@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IFilm } from "../models/IFilm";
+import { IUser } from "../models/IUser";
 
 export const filmAPI = createApi({
   reducerPath: "filmAPI",
@@ -8,21 +9,51 @@ export const filmAPI = createApi({
   }),
   tagTypes: ["Film"],
   endpoints: (build) => ({
-    fetAllFilms: build.query<IFilm[], number>({
+    getUsers: build.query<IUser[], number>({
       query: () => ({
-        url: "/films",
+        url: "/Users",
       }),
       providesTags: (result) => ["Film"],
     }),
-    getFilmByID: build.query<IFilm, any>({
-      query: (id) => ({
-        url: `/films/${id}`,
-        method: "GET",
+    createUser: build.mutation<IUser[], IUser>({
+      query: (user) => ({
+        url: `/Users?`,
+        method: "POST",
+        body: user,
       }),
+      invalidatesTags: ["Film"],
     }),
-    createFilm: build.mutation<IFilm, IFilm>({
+    removeUser: build.mutation<IUser, IUser>({
+      query: (user) => ({
+        url: `/Users/${user.id}`,
+        method: "DELETE",
+        body: user,
+      }),
+      invalidatesTags: ["Film"],
+    }),
+    removeUserFilms: build.mutation<IFilm, IFilm>({
       query: (film) => ({
-        url: "/films",
+        url: `/films/${film.id}`,
+        method: "DELETE",
+        body: film,
+      }),
+      invalidatesTags: ["Film"],
+    }),
+    getFilms: build.query<IFilm[], number>({
+      query: (id) => ({
+        url: `/films/?userId=${id}`,
+      }),
+      providesTags: (result) => ["Film"],
+    }),
+    getAllFilms: build.query<IFilm[], number>({
+      query: () => ({
+        url: `/films/`,
+      }),
+      providesTags: (result) => ["Film"],
+    }),
+    createFilm: build.mutation<IFilm[], IFilm>({
+      query: (film) => ({
+        url: `/films?`,
         method: "POST",
         body: film,
       }),

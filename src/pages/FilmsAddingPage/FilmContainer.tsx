@@ -1,77 +1,50 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { filmAPI } from "../../services/FilmServises";
-import FilmItem from "../../components/FilmItem/FilmItem";
-import { IFilm } from "../../models/IFilm";
-import { NumbersContext } from "../../context";
 import cl from "./_FilmContainer.module.scss";
 import AnimatedPage from "../AnimatedPage";
+import UserFilms from "../../components/UserFilms/UserFilms";
+import { IUser } from "../../models/IUser";
+import { Container, Fab } from "@mui/material";
+
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Users from "../../components/UserFilms/_UserFilms.module.scss";
+import AddUserForm from "../../components/AddUserFrom/AddUserForm";
 
 const FilmContainer = () => {
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [value, setValue] = useState<number | string>(0);
-  const [createFilm, {}] = filmAPI.useCreateFilmMutation();
-  const [updateFilm, {}] = filmAPI.useUpdateFilmMutation();
-  const [deleteFilm, {}] = filmAPI.useRemoveFilmMutation();
-  const { data: films } = filmAPI.useFetAllFilmsQuery(100);
-  const { numbers, allFilms, setAllFilms } = useContext(NumbersContext);
+  const { data: users } = filmAPI.useGetUsersQuery(100);
 
-  const handleCreate = async (event: any) => {
-    event.preventDefault();
-    const setNum = Number(value);
-    await createFilm({
-      title: title,
-      author: author,
-      value: 1 * setNum,
-      chance: 1,
-    } as IFilm);
-    setAuthor("");
-    setTitle("");
-    setValue("");
-  };
-
-  const handleUpdate = (film: IFilm) => {
-    updateFilm(film);
-  };
-
-  const handleDelete = (film: IFilm) => {
-    deleteFilm(film);
-  };
   return (
     <AnimatedPage>
-      <div className={cl.filmConteinerWrapp}>
-        {allFilms &&
-          allFilms.map((film) => (
-            <div key={film.id}>
-              <FilmItem
-                allFilms={allFilms}
-                remove={handleDelete}
-                update={handleUpdate}
-                film={film}
-              />
-            </div>
-          ))}
-        <form>
-          <input
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Название фильма"
-            value={title}
-          />
-          <input
-            type="text"
-            onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Автор"
-            value={author}
-          />
-          <input
-            type="number"
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Шанс на победу"
-            value={value}
-          />
-          <button onClick={handleCreate}>Добавить</button>
-        </form>
+      <div className={cl.FilmsAddingPage__background}>
+        <Container maxWidth="lg">
+          <div className={cl.titleContainer}>
+            <h1>Правила игры:</h1>
+            <p>Добавьте игроков</p>
+            <p>Выберите список фильмов для каждого игрока</p>
+          </div>
+          <TransitionGroup
+            component="div"
+            className={cl.filmConteinerWrapp__users}
+          >
+            {users &&
+              users.map((user) => (
+                <CSSTransition
+                  key={user.id}
+                  classNames={{
+                    enterActive: Users.enterActive,
+                    enterDone: Users.enterDone,
+                    exitActive: Users.exitActive,
+                  }}
+                  timeout={{
+                    exit: 250,
+                  }}
+                >
+                  <UserFilms user={user} />
+                </CSSTransition>
+              ))}
+            <AddUserForm />
+          </TransitionGroup>
+        </Container>
       </div>
     </AnimatedPage>
   );

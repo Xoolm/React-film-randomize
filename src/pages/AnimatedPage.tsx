@@ -4,9 +4,9 @@ import React, { FC } from "react";
 type ChildProps = { children: React.ReactElement };
 
 const animations = {
-  initial: { opacity: 0, x: 100 },
+  initial: { opacity: 0, x: 0 },
   animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -100 },
+  exit: { opacity: 0, x: -250 },
 };
 
 const AnimatedPage: FC<ChildProps> = ({ children }) => {
@@ -16,7 +16,7 @@ const AnimatedPage: FC<ChildProps> = ({ children }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
       {children}
     </motion.div>

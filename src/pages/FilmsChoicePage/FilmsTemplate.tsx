@@ -5,16 +5,27 @@ import cl from "./_FilmsTemplate.module.scss";
 import { IFilm } from "../../models/IFilm";
 import { getRandNum } from "../../services/RandomOrgAPI";
 import { NumbersContext } from "../../context";
-import { TransitionGroup } from "react-transition-group";
-import { CSSTransition } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import AnimatedPage from "../AnimatedPage";
+import { useLocation } from "react-router-dom";
+import { Container } from "@mui/material";
+import Card from "../../components/FilmCard/_FilmCard.module.scss";
 
 const FilmsTemplate = () => {
-  const { data: films } = filmAPI.useFetAllFilmsQuery(100);
+  const { data: films } = filmAPI.useGetAllFilmsQuery(100);
   const { allFilms } = useContext(NumbersContext);
   const [filmPlate, setFilmPlate] = useState<IFilm[]>();
+  const [droppedOut, setDroppedOut] = useState<any>();
   const [winner, setWinner] = useState<any>();
   useMemo(() => setFilmPlate(allFilms), [allFilms]);
+
+  useEffect(() => {
+    if (filmPlate?.length === 1) {
+      filmPlate.map((film) => {
+        setWinner(film.id);
+      });
+    }
+  }, [filmPlate]);
 
   const numbers: number[] = [];
   filmPlate &&
@@ -23,11 +34,10 @@ const FilmsTemplate = () => {
         numbers.push(film.id);
       }
     });
-  let max = filmPlate?.reduce((acc, curr) =>
-    acc.chance >= curr.chance ? acc : curr
-  );
-  let bigBoy = max?.id;
-  console.log(filmPlate);
+  // let max = filmPlate?.reduce((acc, curr) =>
+  //   acc.chance >= curr.chance ? acc : curr
+  // );
+  // let bigBoy = max?.id;
 
   const { data: random, refetch } = getRandNum.useGetRandNumQuery(
     numbers?.length
@@ -39,33 +49,31 @@ const FilmsTemplate = () => {
     e.preventDefault();
     refetch();
     filmPlate?.map((film) => {
-      return setWinner(numbers[randomNum!]);
+      return setDroppedOut(numbers[randomNum!]);
     });
   };
   useEffect(() => {
-    setFilmPlate(filmPlate?.filter((film) => film.id !== winner));
-  }, [winner]);
+    setFilmPlate(filmPlate?.filter((film) => film.id !== droppedOut));
+  }, [droppedOut]);
+
+  console.log(filmPlate);
 
   return (
     <AnimatedPage>
-      <div className={cl.templateWrapp}>
-        <TransitionGroup className={cl.filmsWrapp} component="div">
-          {films &&
-            films.map((film) => (
-              <CSSTransition
-                classNames="filmCard"
-                key={film.id}
-                timeout={500}
-                appear={true}
-                in={true}
-              >
-                <FilmCard film={film} winner={winner} bigBoy={bigBoy} />
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
-        <button className={cl.addWinner} onClick={pickAWinner}>
-          Выбрать победителя
-        </button>
+      <div className={cl.FilmsChoisePage__background}>
+        <Container sx={{ mt: "40px" }}>
+          <div className={cl.templateWrapp}>
+            <div className={cl.filmsWrapp}>
+              {films &&
+                films.map((film) => (
+                  <FilmCard key={film.id} film={film} droppedOut={droppedOut} />
+                ))}
+            </div>
+            <button className={cl.addWinner} onClick={pickAWinner}>
+              Выбрать победителя
+            </button>
+          </div>
+        </Container>
       </div>
     </AnimatedPage>
   );

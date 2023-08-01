@@ -1,41 +1,25 @@
 import React, { FC, useEffect, useState } from "react";
 import { IFilm } from "../../models/IFilm";
-import cl from "./_FilmCard.module.scss";
+import Card from "./_FilmCard.module.scss";
 
 interface FilmCard {
   film: IFilm;
-  winner: number;
-  bigBoy: number | undefined;
+  droppedOut: number;
 }
 
-const FilmCard: FC<FilmCard> = ({ film, winner, bigBoy }) => {
+const FilmCard: FC<FilmCard> = ({ film, droppedOut }) => {
   const [hideWinner, setHideWinner] = useState(false);
-  const [greatestChance, setGreatestChance] = useState(false);
 
   useEffect(() => {
-    if (bigBoy === film.id) {
-      setGreatestChance(true);
-    } else {
-      setGreatestChance(false);
-    }
-  }, [bigBoy]);
-
-  useEffect(() => {
-    if (winner === film.id) {
+    if (droppedOut === film.id) {
       setHideWinner(true);
     }
-  }, [winner]);
+  }, [droppedOut]);
 
-  return hideWinner ? (
-    <div className="filmCard" style={{ opacity: "0" }}>
-      <div className={cl.filmCard__author}>{film.author}</div>
-      <div className={cl.filmCard__title}>{film.title}</div>
-    </div>
-  ) : (
-    <div className="filmCard">
-      {greatestChance && <h2 className={cl.filmCard__king}>*корона*</h2>}
-      <div className={cl.filmCard__author}>{film.author}</div>
-      <div className={cl.filmCard__title}>{film.title}</div>
+  return (
+    <div className={hideWinner ? Card.filmCardOut : Card.filmCard}>
+      <div className={Card.filmCard__author}>{film.author}</div>
+      <div className={Card.filmCard__title}>{film.title}</div>
     </div>
   );
 };
