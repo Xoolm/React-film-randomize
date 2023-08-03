@@ -18,7 +18,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
   const [deleteFilm, {}] = filmAPI.useRemoveFilmMutation();
   const [editInput, setEditInput] = useState(false);
   // const [modalActive, setModalActive] = useState(false);
-  const [title, setTitle] = useState(film.title);
+  const [title, setTitle] = useState(film.option);
   // const [value, setValue] = useState<number | string>(film.value);
 
   const handleRemove = (e: React.MouseEvent) => {
@@ -32,7 +32,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
     // const setNum = Number(value);
     updateFilm({
       ...film,
-      title: title,
+      option: title,
       // value: 1 * setNum,
     });
   };
@@ -69,7 +69,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
         </div>
       ) : (
         <>
-          <h2 className={item.filmWrapp__title}>{film.title}</h2>
+          <h2 className={item.filmWrapp__title}>{film.option}</h2>
           <Fab
             color="info"
             className={item.edit}

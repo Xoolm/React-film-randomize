@@ -1,0 +1,53 @@
+.filmCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 15px;
+  height: 180px;
+  width: 150px;
+  background: #0b3960;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+  .title {
+  }
+  .author {
+  }
+}
+.filmCardOut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 15px;
+  height: 180px;
+  width: 150px;
+  background: #8febe6;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+  opacity: 0;
+  animation-name: CardOut;
+  animation-duration: 2s;
+  transition: 500ms ease-in;
+}
+.filmCard-exit-active {
+}
+@keyframes CardOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+
+  75% {
+  }
+
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}

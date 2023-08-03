@@ -1,7 +1,7 @@
 export interface IFilm {
   userId: number;
   id: number;
-  title: string;
+  option: string;
   author: string;
   value: number;
   chance: number;

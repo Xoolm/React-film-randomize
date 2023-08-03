@@ -27,3 +27,5 @@ export const getRandNum = createApi({
     }),
   }),
 });
+
+export const { useLazyGetRandNumQuery } = getRandNum;

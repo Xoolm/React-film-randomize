@@ -1,0 +1,11 @@
+.wheelWrapper {
+  width: 800px;
+  height: 800px;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    max-height: unset;
+    max-width: unset;
+  }
+}

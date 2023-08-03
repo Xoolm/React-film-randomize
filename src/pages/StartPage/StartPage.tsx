@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedPage from "../AnimatedPage";
+import AnimatedPage from "../AnimatedPages";
 import "./_StartPage.scss";
 
 const StartPage = () => {

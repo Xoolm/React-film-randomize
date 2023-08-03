@@ -1,0 +1,16 @@
+.FilmsAddingPage__background {
+  height: 100%;
+  background-image: url("./image/background_adding-page.svg");
+  background-size: cover;
+  .titleContainer {
+    padding: 19px 0 10px;
+    text-align: center;
+    color: white;
+  }
+  .filmConteinerWrapp__users {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 0;
+  }
+}

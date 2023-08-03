@@ -30,7 +30,7 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
     // const setNum = Number(value);
     await createFilm({
       userId: user.id,
-      title: title,
+      option: title,
       // value: 1 * setNum,
       chance: 1,
     } as IFilm);

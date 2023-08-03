@@ -1,6 +1,6 @@
 import { createRef } from "react";
-import FilmContainer from "../pages/FilmsAddingPage/FilmContainer";
-import FilmsTemplate from "../pages/FilmsChoicePage/FilmsTemplate";
+import FilmContainer from "../pages/AddingPage/Adding";
+import FilmsTemplate from "../pages/GamesPage/Games";
 import StartPage from "../pages/StartPage/StartPage";
 
 export const routes = [
