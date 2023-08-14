@@ -4,8 +4,10 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 180px;
-  width: 150px;
+  height: 100%;
+  width: 100%;
+  min-width: 180px;
+  min-height: 190px;
   perspective: 600px;
   border-radius: 10px;
   color: #8febe6;
@@ -15,6 +17,30 @@
   &:hover {
     animation: shake 0.8s;
     animation-iteration-count: infinite;
+  }
+}
+@media (max-width: 1000px) {
+  .filmCard {
+    min-width: 140px;
+    min-height: 150px;
+  }
+}
+@media (max-width: 800px) {
+  .filmCard {
+    min-width: 120px;
+    min-height: 130px;
+  }
+}
+@media (max-width: 700px) {
+  .filmCard {
+    min-width: 90px;
+    min-height: 100px;
+  }
+}
+@media (max-width: 600px) {
+  .filmCard {
+    min-width: 70px;
+    min-height: 80px;
   }
 }
 .card {

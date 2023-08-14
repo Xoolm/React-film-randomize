@@ -4,3 +4,14 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
+@media (max-width: 800px) {
+  .mysteryCardWrapp {
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .mysteryCardWrapp {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 10px;
+  }
+}

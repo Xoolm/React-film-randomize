@@ -31,8 +31,16 @@
     .addWinner_button {
       margin: 25px 0 0 0;
       padding: 15px 25px;
-      grid-column-start: 2;
+      grid-column-start: 3;
       border: solid 1px pink;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .randomCardWrapp {
+    .addWinner_button {
+      grid-column-start: 2;
+      grid-column-end: 4;
     }
   }
 }
@@ -45,6 +53,13 @@
       padding: 10px 20px;
       grid-column-start: 2;
       border: solid 1px pink;
+    }
+  }
+}
+@media (max-width: 360px) {
+  .randomCardWrapp {
+    .addWinner_button {
+      grid-column-start: 1;
     }
   }
 }

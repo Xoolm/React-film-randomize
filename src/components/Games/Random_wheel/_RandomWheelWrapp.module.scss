@@ -1,7 +1,9 @@
 .wheelWrapper {
+  display: flex;
+  flex-direction: column;
   width: 800px;
   height: 800px;
-
+  margin: 0 auto 0;
   > div {
     height: 100%;
     width: 100%;
@@ -23,3 +25,37 @@
     border: solid 1px pink;
   }
 }
+@media (max-width: 800px) {
+  .wheelWrapper {
+    width: 650px;
+    height: 650px;
+    .addWinner {
+      float: none;
+      margin: 40px auto 0;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .wheelWrapper {
+    width: 550px;
+    height: 550px;
+  }
+}
+@media (max-width: 550px) {
+  .wheelWrapper {
+    width: 450px;
+    height: 450px;
+  }
+}
+@media (max-width: 450px) {
+  .wheelWrapper {
+    width: 320px;
+    height: 320px;
+  }
+}
+// @media (max-width: 400px) {
+//   .wheelWrapper {
+//     width: 450px;
+//     height: 450px;
+//   }
+// }
