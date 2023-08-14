@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/React-film-randomize/static/css/main.0f733a35.css",
+    "main.js": "/React-film-randomize/static/js/main.198910a7.js",
+    "static/media/background_start-page.svg": "/React-film-randomize/static/media/background_start-page.5fc35716a4dcf8400711.svg",
+    "static/media/background_adding-page.svg": "/React-film-randomize/static/media/background_adding-page.51eb02ac30bd5abb364d.svg",
+    "static/media/Choise_Films_background.svg": "/React-film-randomize/static/media/Choise_Films_background.c10d6d30a1bae3be3cdf.svg",
+    "static/media/logomovie.svg": "/React-film-randomize/static/media/logomovie.49ace7ec9e7341effb79cde367eac2b3.svg",
+    "static/media/film_reel.svg": "/React-film-randomize/static/media/film_reel.2cc8bd1f95c8632bd562633273b46d5b.svg",
+    "index.html": "/React-film-randomize/index.html",
+    "main.0f733a35.css.map": "/React-film-randomize/static/css/main.0f733a35.css.map",
+    "main.198910a7.js.map": "/React-film-randomize/static/js/main.198910a7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f733a35.css",
+    "static/js/main.198910a7.js"
+  ]
+}
