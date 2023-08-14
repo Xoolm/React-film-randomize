@@ -6,54 +6,34 @@ import { filmAPI } from "../../services/FilmServises";
 import { NumbersContext } from "../../context";
 import Users from "./_UserFilms.module.scss";
 import item from "../FilmItem/_FilmItem.module.scss";
-import addForm from "../AddFilmForm/_AddFilmForm.module.scss";
 import { IconButton } from "@mui/material";
 import AddFilmForm from "../AddFilmForm/AddFilmForm";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 interface UserData {
   user: IUser;
+  onDelete: (id: number) => void;
 }
-
-const UserFilms: FC<UserData> = ({ user }) => {
-  const [removeUser, {}] = filmAPI.useRemoveUserMutation();
-  const [removeUserFilms, {}] = filmAPI.useRemoveUserFilmsMutation();
-  const [allFilms, setAllFilms] = useState<IFilm[]>();
-  const { data: films } = filmAPI.useGetFilmsQuery(user.id);
-  const { numbers } = useContext(NumbersContext);
-  useMemo(() => setAllFilms(films), [films]);
-
-  const handleRemove = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    films &&
-      films.map((film) => {
-        removeUserFilms(film);
-      });
-    removeUser(user);
-  };
-
-  useEffect(() => {
-    if (allFilms) {
-      const updatedFilms = allFilms.map((film) => {
-        const percentage = Math.floor((film.value / numbers.length) * 10000);
-        return { ...film, chance: percentage };
-      });
-      setAllFilms(updatedFilms);
-    }
-  }, [films]);
-
+const UserFilms: FC<UserData> = ({ user, onDelete }) => {
+  const { allFilms } = useContext(NumbersContext);
+  const [userFilms, setUserFilms] = useState<IFilm[]>();
+  useMemo(
+    () => setUserFilms(allFilms.filter((film) => film.userID === user.id)),
+    [allFilms]
+  );
   return (
     <div className={Users.userWrapper}>
       <IconButton
         className={Users.userWrapper__remove}
         aria-label="delete"
-        onClick={handleRemove}
+        onClick={() => onDelete(user.id)}
       >
         X
       </IconButton>
-      <div className={Users.userWrapper__title}>{user.name}</div>
+      <div className={Users.userWrapper__title}>{user.userName}</div>
       <TransitionGroup component="div">
-        {allFilms &&
-          allFilms.map((film) => (
+        {userFilms &&
+          userFilms.map((film) => (
             <CSSTransition
               key={film.id}
               classNames={{

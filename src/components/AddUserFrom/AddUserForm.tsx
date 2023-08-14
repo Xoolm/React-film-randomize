@@ -1,30 +1,27 @@
-import React, { useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import UserForm from "./_AddUserForm.module.scss";
 import { Fab } from "@mui/material";
-import { IUser } from "../../models/IUser";
-import { filmAPI } from "../../services/FilmServises";
 import CheckIcon from "@mui/icons-material/Check";
 import { CSSTransition } from "react-transition-group";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 
-const AddUserForm = () => {
+interface AddUserProps {
+  onCreate: (userName: string) => void;
+}
+const AddUserForm: FC<AddUserProps> = ({ onCreate }) => {
   const [showButton, setShowButton] = useState(true);
   const [showInput, setShowInput] = useState(false);
-  const [name, setName] = useState("");
-  const [createUser, {}] = filmAPI.useCreateUserMutation();
-  const handleCreate = async (event: any) => {
-    event.preventDefault();
-    await createUser({
-      name: name,
-    } as IUser);
-    setName("");
-    setShowInput(false);
-  };
+  const [userName, setUserName] = useState("");
 
   const handleShowInput = () => {
     setShowInput(false);
-    setName("");
+    setUserName("");
+  };
+  const handleCreate = () => {
+    onCreate(userName);
+    setShowInput(false);
+    setUserName("");
   };
 
   const nodeRef = useRef(null);
@@ -51,9 +48,9 @@ const AddUserForm = () => {
             <input
               className={UserForm.Name__input}
               type="text"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
               placeholder="Добавить пользователя"
-              value={name}
+              value={userName}
             />
             <Fab
               onClick={handleCreate}

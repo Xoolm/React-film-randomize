@@ -1,27 +1,37 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { NumbersContext } from "./context";
-import { filmAPI } from "./services/FilmServises";
 import "./style/main.css";
 import { IFilm } from "./models/IFilm";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { routes } from "./router";
-import NavBar from "./components/navBar/NavBar";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header/Header";
-import { Container } from "@mui/material";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-  const { data: films } = filmAPI.useGetAllFilmsQuery(100);
-  const [allFilms, setAllFilms] = useState<IFilm[]>();
-  useMemo(() => setAllFilms(films), [films]);
-
+  const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
   const numbers: number[] = [];
+  console.log(allFilms);
+  console.log(numbers);
+
   allFilms &&
-    allFilms.forEach((film) => {
-      for (let i = 0; i < 100; i++) {
+    allFilms.forEach((film: IFilm) => {
+      for (let i = 0; i < 100 / film.optionSize; i++) {
         numbers.push(film.id);
       }
     });
+
+  useEffect(() => {
+    if (allFilms) {
+      const updatedFilms = allFilms.map((film: IFilm) => {
+        const percentage = Math.floor(
+          (film.optionSize / numbers.length) * 10000
+        );
+        return { ...film, chance: percentage };
+      });
+      setAllFilms(updatedFilms);
+    }
+  }, [numbers.length, setAllFilms]);
 
   const location = useLocation();
   return (

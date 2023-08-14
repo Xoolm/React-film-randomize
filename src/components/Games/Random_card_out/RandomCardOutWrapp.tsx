@@ -1,26 +1,25 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import CardOut from "./_RandomCardOut.module.scss";
 import { NumbersContext } from "../../../context";
 import { IFilm } from "../../../models/IFilm";
-import { filmAPI } from "../../../services/FilmServises";
 import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomCard from "./components/RandomCard";
+import { Button } from "@mui/material";
 
-const RandomCardOutWrapp = () => {
-  const { data: films } = filmAPI.useGetAllFilmsQuery(100);
+interface RandomCardOutWrappProps {
+  filmPlate: IFilm[];
+  setFilmPlate: (arg0: IFilm[]) => void;
+  numbers: number[];
+}
+
+const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({
+  filmPlate,
+  setFilmPlate,
+  numbers,
+}) => {
   const { allFilms } = useContext(NumbersContext);
-  const [filmPlate, setFilmPlate] = useState<IFilm[]>();
-  useMemo(() => setFilmPlate(allFilms), [allFilms]);
-  const numbers: number[] = [];
-  filmPlate &&
-    filmPlate.forEach((film) => {
-      for (let i = 0; i < 100; i++) {
-        numbers.push(film.id);
-      }
-    });
   const [getRandom, { data: random }] = getRandNum.useLazyGetRandNumQuery();
   const [droppedOut, setDroppedOut] = useState<any>();
-
   const pickAWinner = async () => {
     await getRandom(numbers?.length);
   };
@@ -45,15 +44,15 @@ const RandomCardOutWrapp = () => {
   // );
   // let bigBoy = max?.id;
   return (
-    <>
-      {films &&
-        films.map((film) => (
+    <div className={CardOut.randomCardWrapp}>
+      {allFilms &&
+        allFilms.map((film) => (
           <RandomCard key={film.id} film={film} droppedOut={droppedOut} />
         ))}
-      <button className={CardOut.addWinner} onClick={pickAWinner}>
+      <Button className={CardOut.addWinner_button} onClick={pickAWinner}>
         Выбрать победителя
-      </button>
-    </>
+      </Button>
+    </div>
   );
 };
 

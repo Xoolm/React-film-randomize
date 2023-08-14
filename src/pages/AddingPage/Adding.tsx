@@ -1,22 +1,39 @@
-import React, { useState } from "react";
-import { filmAPI } from "../../services/FilmServises";
+import { useContext, useState } from "react";
 import Adding from "./_Adding.module.scss";
 import AnimatedPage from "../AnimatedPages";
 import UserFilms from "../../components/UserFilms/UserFilms";
 import { IUser } from "../../models/IUser";
-import { Container, Fab } from "@mui/material";
-
+import { Button, Container } from "@mui/material";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Users from "../../components/UserFilms/_UserFilms.module.scss";
 import AddUserForm from "../../components/AddUserFrom/AddUserForm";
+import { NumbersContext } from "../../context";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { NavLink } from "react-router-dom";
 
 const FilmContainer = () => {
-  const { data: users } = filmAPI.useGetUsersQuery(100);
+  const { allFilms, setAllFilms } = useContext(NumbersContext);
+  const [users, setUsers] = useLocalStorage([], "users");
+
+  const handleCreate = (userName: string) => {
+    const newUser = {
+      id: Date.now() + 1,
+      userName: userName,
+    };
+    setUsers([...users, newUser]);
+  };
+  const handleDelete = (id: number) => {
+    setUsers(users.filter((users: IUser) => users.id !== id));
+    setAllFilms(allFilms.filter((film) => film.userID !== id));
+  };
 
   return (
     <AnimatedPage>
       <div className={Adding.FilmsAddingPage__background}>
-        <Container maxWidth="lg">
+        <Container
+          maxWidth="lg"
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
           <div className={Adding.titleContainer}>
             <h1>Правила игры:</h1>
             <p>Добавьте игроков</p>
@@ -27,7 +44,7 @@ const FilmContainer = () => {
             className={Adding.filmConteinerWrapp__users}
           >
             {users &&
-              users.map((user) => (
+              users.map((user: IUser) => (
                 <CSSTransition
                   key={user.id}
                   classNames={{
@@ -39,11 +56,14 @@ const FilmContainer = () => {
                     exit: 250,
                   }}
                 >
-                  <UserFilms user={user} />
+                  <UserFilms onDelete={handleDelete} user={user} />
                 </CSSTransition>
               ))}
-            <AddUserForm />
+            <AddUserForm onCreate={handleCreate} />
           </TransitionGroup>
+          <Button className={Adding.adding__button} color="inherit">
+            <NavLink to="/choiceFilms">Начать</NavLink>
+          </Button>
         </Container>
       </div>
     </AnimatedPage>

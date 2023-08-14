@@ -1,45 +1,54 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useContext, useRef, useState } from "react";
 import addForm from "./_AddFilmForm.module.scss";
-import { IFilm } from "../../models/IFilm";
-import { filmAPI } from "../../services/FilmServises";
 import { IUser } from "../../models/IUser";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { CSSTransition } from "react-transition-group";
+import { NumbersContext } from "../../context";
+import { ADDRCONFIG } from "dns";
 
 interface AddFilmFormProps {
   user: IUser;
 }
 
 const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
+  const { allFilms, setAllFilms } = useContext(NumbersContext);
   const [showButton, setShowButton] = useState(true);
   const [showInput, setShowInput] = useState(false);
   const [title, setTitle] = useState("");
-  // const [value, setValue] = useState<number | string>();
-  const [createFilm, {}] = filmAPI.useCreateFilmMutation();
+  const [value, setValue] = useState<number>(1);
 
   const handleShowInput = () => {
     setShowInput(false);
     setTitle("");
   };
 
-  const handleCreate = async (event: any) => {
-    event.preventDefault();
-    // const setNum = Number(value);
-    await createFilm({
-      userId: user.id,
+  const handleCreateFilm = () => {
+    const newFilm = {
+      userID: user.id,
+      id: Date.now(),
       option: title,
-      // value: 1 * setNum,
+      optionSize: value,
       chance: 1,
-    } as IFilm);
+    };
+    setAllFilms([...allFilms, newFilm]);
     setTitle("");
-    // setValue("");
   };
-
   const nodeRef = useRef(null);
-
+  const [optionSize, setOptionSize] = useState(1);
+  const handlePlus = () => {
+    if (optionSize <= 9) {
+      setOptionSize((prev) => prev + 1);
+    }
+  };
+  const handleMinus = () => {
+    if (optionSize >= 2) {
+      setOptionSize((prev) => prev - 1);
+    }
+  };
   return (
     <div className={addForm.FilmFormWrapper}>
       <CSSTransition
@@ -61,21 +70,28 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
         <div ref={nodeRef} className={addForm.FormWrapper}>
           <form className={addForm.FormWrapper__form}>
             <input
+              required
+              minLength={1}
               className={addForm.inputTitle}
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Название фильма"
               value={title}
             />
-            {/* <input
-          className={cl.inputValue}
-          type="number"
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Шанс на победу"
-          value={value}
-        /> */}
+            <div className={addForm.counterWrapp}>
+              <Fab className={addForm.counterWrapp__plus} onClick={handlePlus}>
+                <AddIcon />
+              </Fab>
+              <div className={addForm.counterWrapp__display}>{optionSize}</div>
+              <Fab
+                className={addForm.counterWrapp__minus}
+                onClick={handleMinus}
+              >
+                <RemoveIcon />
+              </Fab>
+            </div>
             <Fab
-              onClick={handleCreate}
+              onClick={handleCreateFilm}
               className={addForm.success}
               size="small"
               aria-label="add"

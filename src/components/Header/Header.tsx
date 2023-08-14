@@ -1,5 +1,5 @@
 import "./_Header.scss";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {
   NavLink,
@@ -10,39 +10,26 @@ import {
 } from "react-router-dom";
 import Logo from "./image/logomovie.svg";
 import FilmReel from "./image/film_reel.svg";
+import NavBar from "../navBar/NavBar";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function Header() {
-  // const [state, setState] = useState(false);
-  // const location = useLocation();
-  // useEffect(() => {
-  //   if (location.pathname === "/HomePage") {
-  //     setState(true);
-  //   } else {
-  //     return;
-  //   }
-  // }, [location]);
+  const [menuActive, setMenuActive] = useState(false);
 
-  // console.log(state);
-
-  const LinkBehavior = React.forwardRef<any, Omit<RouterLinkProps, "to">>(
-    (props, ref) => <RouterLink ref={ref} to="/" {...props} />
-  );
   return (
     <div className="header">
-      <img className="logo" src={Logo} alt="logo" width="300" />
-      <div className="menu">
-        <Button className="navLink__btn" color="inherit">
-          <NavLink to="/HomePage">Home</NavLink>
-        </Button>
-        <Button className="navLink__btn" color="inherit">
-          <NavLink to="/addingFilms">Adding</NavLink>
-        </Button>
-        <Button className="navLink__btn" color="inherit">
-          <NavLink to="/choiceFilms">Game</NavLink>
-        </Button>
+      <img className="logo" src={Logo} alt="logo" />
+      <NavBar active={menuActive} setActive={setMenuActive} />
+      <div
+        className={menuActive ? "nav-icon3 open" : "nav-icon3"}
+        onClick={() => setMenuActive(!menuActive)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-
-      <img src={FilmReel} alt="logo2" width="260" />
+      <img className="logo2" src={FilmReel} alt="logo2" width="260" />
     </div>
   );
 }

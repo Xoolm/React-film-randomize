@@ -1,40 +1,51 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import { IFilm } from "../../models/IFilm";
-import Modal from "../UI/modal/Modal";
 import item from "./_FilmItem.module.scss";
-import { filmAPI } from "../../services/FilmServises";
 import { Fab } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import CheckIcon from "@mui/icons-material/Check";
+import { NumbersContext } from "../../context";
 
 interface FilmItemProps {
   film: IFilm;
 }
 
 const FilmItem: FC<FilmItemProps> = ({ film }) => {
-  const [updateFilm, {}] = filmAPI.useUpdateFilmMutation();
-  const [deleteFilm, {}] = filmAPI.useRemoveFilmMutation();
+  const { allFilms, setAllFilms } = useContext(NumbersContext);
   const [editInput, setEditInput] = useState(false);
-  // const [modalActive, setModalActive] = useState(false);
   const [title, setTitle] = useState(film.option);
-  // const [value, setValue] = useState<number | string>(film.value);
+  const [optionSize, setOptionSize] = useState(film.optionSize);
 
-  const handleRemove = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    deleteFilm(film);
+  const handlePlus = () => {
+    if (optionSize <= 9) {
+      setOptionSize((prev) => prev + 1);
+    }
+  };
+  const handleMinus = () => {
+    if (optionSize >= 2) {
+      setOptionSize((prev) => prev - 1);
+    }
   };
 
-  const hanldeUpdate = async (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleRemove = (e: React.MouseEvent) => {
+    setAllFilms(allFilms.filter((item) => item.id !== film.id));
+  };
+
+  const hanldeUpdate = (e: React.MouseEvent) => {
+    setAllFilms(
+      allFilms.map((item) => {
+        if (film.id === item.id) {
+          return { ...item, option: title, optionSize: optionSize };
+        } else {
+          return item;
+        }
+      })
+    );
     setEditInput(false);
-    // const setNum = Number(value);
-    updateFilm({
-      ...film,
-      option: title,
-      // value: 1 * setNum,
-    });
   };
 
   return (
@@ -48,28 +59,40 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <Fab
-              color="info"
-              className={item.FormWrapper__edit}
-              size="small"
-              aria-label="edit"
-              onClick={hanldeUpdate}
-            >
-              <CheckIcon className={item.edit__icon} />
-            </Fab>
-            <Fab
-              className={item.FormWrapper__close}
-              onClick={() => setEditInput(false)}
-              size="small"
-              aria-label="add"
-            >
-              <CloseIcon className={item.close__icon} />
-            </Fab>
+            <div className={item.counterWrapp}>
+              <Fab className={item.counterWrapp__plus} onClick={handlePlus}>
+                <AddIcon />
+              </Fab>
+              <div className={item.counterWrapp__display}>{optionSize}</div>
+              <Fab className={item.counterWrapp__minus} onClick={handleMinus}>
+                <RemoveIcon />
+              </Fab>
+            </div>
+            <div className={item.formButtons}>
+              <Fab
+                color="info"
+                className={item.FormWrapper__edit}
+                size="small"
+                aria-label="edit"
+                onClick={hanldeUpdate}
+              >
+                <CheckIcon className={item.edit__icon} />
+              </Fab>
+              <Fab
+                className={item.FormWrapper__close}
+                onClick={() => setEditInput(false)}
+                size="small"
+                aria-label="add"
+              >
+                <CloseIcon className={item.close__icon} />
+              </Fab>
+            </div>
           </form>
         </div>
       ) : (
         <>
           <h2 className={item.filmWrapp__title}>{film.option}</h2>
+
           <Fab
             color="info"
             className={item.edit}
@@ -86,6 +109,10 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
           >
             <DeleteIcon className={item.filmWrapp__remove__icon} />
           </Fab>
+          <div className={item.chanceWrapp}>
+            <p className={item.filmFactor}>{film.optionSize} | </p>
+            <p className={item.filmChance}>| {film.chance} %</p>
+          </div>
         </>
       )}
     </div>

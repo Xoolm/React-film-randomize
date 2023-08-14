@@ -1,32 +1,28 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { FC, useContext, useEffect, useMemo, useState } from "react";
 import { NumbersContext } from "../../../context";
 import { IFilm } from "../../../models/IFilm";
-import { filmAPI } from "../../../services/FilmServises";
 import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomWheel from "./components/RandomWheel";
 import Wheel from "./_RandomWheelWrapp.module.scss";
+import { Button } from "@mui/material";
 
-const RandomWheelWrapp = () => {
+interface RandomWheelProps {
+  filmPlate: IFilm[];
+  setFilmPlate: (arg0: IFilm[]) => void;
+  numbers: number[];
+}
+
+const RandomWheelWrapp: FC<RandomWheelProps> = ({
+  filmPlate,
+  setFilmPlate,
+  numbers,
+}) => {
   const [mustSpin, setMustSpin] = useState(false);
-  const { allFilms } = useContext(NumbersContext);
-  const [filmPlate, setFilmPlate] = useState<IFilm[]>();
-  useMemo(() => setFilmPlate(allFilms), [allFilms]);
-  const numbers: number[] = [];
-  filmPlate &&
-    filmPlate.forEach((film) => {
-      for (let i = 0; i < 100; i++) {
-        numbers.push(film.id);
-      }
-    });
-  const [getRandom, { data: random, isSuccess }] =
-    getRandNum.useLazyGetRandNumQuery();
-
-  const randomNum = random?.result?.random?.data;
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
   const [prizeNumber, setPrizeNumber] = useState<any>();
-  console.log(idFIlmWinner);
-  console.log(prizeNumber);
-  console.log(filmPlate);
+  const [getRandom, { data: random, isSuccess }] =
+    getRandNum.useLazyGetRandNumQuery();
+  const randomNum = random?.result?.random?.data;
 
   const handleSpinClick = async () => {
     await getRandom(numbers?.length);
@@ -43,12 +39,6 @@ const RandomWheelWrapp = () => {
         setFilmPlate(filmPlate?.filter((film) => film.id !== idFIlmWinner));
       }, 11500);
   }, [random, idFIlmWinner]);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setFilmPlate(filmPlate?.filter((film) => film.id !== idFIlmWinner));
-  //   }, 11500);
-  // }, [randomNum]);
 
   // const [winner, setWinner] = useState<any>(undefined);
   // useEffect(() => {
@@ -67,9 +57,9 @@ const RandomWheelWrapp = () => {
         prizeNumber={prizeNumber}
         filmPlate={filmPlate}
       />
-      <button className={Wheel.addWinner} onClick={handleSpinClick}>
+      <Button className={Wheel.addWinner} onClick={handleSpinClick}>
         Выбрать победителя
-      </button>
+      </Button>
     </div>
   );
 };

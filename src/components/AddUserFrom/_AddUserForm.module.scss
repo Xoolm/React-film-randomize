@@ -81,8 +81,13 @@
       }
     }
   }
+  @media (max-width: 1200px) {
+    .openInput {
+      margin: 135px 0 0;
+    }
+  }
   .openInput {
-    margin: 135px 0;
+    margin: 135px 0 0px;
     width: 120px;
     height: 120px;
     z-index: 0;

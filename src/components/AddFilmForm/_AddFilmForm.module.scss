@@ -1,3 +1,4 @@
+@import "../../style//mixin_font-size";
 @keyframes neon-1 {
   from {
     box-shadow: 0 0 2px rgba(255, 255, 255, 0.92),
@@ -35,6 +36,53 @@
     flex-direction: column;
     .FormWrapper__form {
       display: flex;
+      .counterWrapp {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: -92px;
+        min-width: 90px;
+        .counterWrapp__plus {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+        .counterWrapp__display {
+          color: white;
+          font-size: 20px;
+        }
+        .counterWrapp__minus {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+      }
       .inputTitle {
         animation: neon-1 0.09s ease-in-out infinite alternate;
         margin: 10px 0;
@@ -45,14 +93,14 @@
         align-items: center;
         border: none;
         height: 50px;
-        min-width: 364px;
+        width: 80%;
         color: #7dddf9;
         padding-left: 10px;
         font-size: 19px;
         font-weight: 400;
         &::placeholder {
           color: #7dddf9;
-          font-size: 19px;
+          @include adaptiv-font(16, 13);
           font-weight: 400;
           opacity: 0.5;
         }
@@ -61,15 +109,15 @@
         }
       }
       .success {
-        margin: 22px 0 0 -42px;
-        width: 27px;
-        height: 27px;
+        width: 50px;
+        height: 50px;
         min-height: 0px;
         z-index: 0;
         background-color: #93b4ca;
         opacity: 0.5;
         transition: 0.5s;
         scale: 0.9;
+        margin: auto 0 auto 17px;
         &:hover {
           scale: 1;
           background-color: #93b4ca;

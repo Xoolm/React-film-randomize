@@ -36,13 +36,16 @@ const RandomWheel: FC<WheelProps> = ({
         mustStartSpinning={mustSpin}
         prizeNumber={prizeNumber}
         data={filmPlate}
-        outerBorderWidth={2}
-        radiusLineWidth={3}
+        outerBorderWidth={1}
+        radiusLineWidth={1}
         innerRadius={11}
         fontSize={11}
         textDistance={61}
-        backgroundColors={["#7dddf9"]}
-        outerBorderColor={"yellow"}
+        backgroundColors={["#020518"]}
+        textColors={["white"]}
+        innerBorderColor={"red"}
+        radiusLineColor={"#ec8dc7"}
+        outerBorderColor={"rgba(238, 141, 200, 1)"}
         onStopSpinning={() => {
           setMustSpin(false);
         }}

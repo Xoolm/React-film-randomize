@@ -18,7 +18,7 @@ const RandomCard: FC<FilmCard> = ({ film, droppedOut }) => {
 
   return (
     <div className={hideWinner ? Card.filmCardOut : Card.filmCard}>
-      <div className={Card.filmCard__author}>{film.author}</div>
+      {/* <div className={Card.filmCard__author}>{film.id}</div> */}
       <div className={Card.filmCard__title}>{film.option}</div>
     </div>
   );

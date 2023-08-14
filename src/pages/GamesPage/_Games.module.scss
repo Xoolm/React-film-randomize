@@ -2,22 +2,23 @@
   background-image: url("./image/Choise_Films_background.svg");
   background-size: cover;
   height: calc(100vh - 170px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  .selectGame {
+    margin: 20px 0 20px;
+  }
   .templateWrapp {
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
     .filmsWrapp {
       display: grid;
+      justify-items: center;
       grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-    button {
-      margin-top: 15px;
-      width: 30%;
-      padding: 10px 15px;
+      gap: 10px;
     }
   }
 }

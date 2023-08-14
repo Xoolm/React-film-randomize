@@ -1,6 +1,8 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import AnimatedPage from "../AnimatedPages";
 import "./_StartPage.scss";
+import FilmContainer from "../AddingPage/Adding";
+import { Button } from "@mui/material";
 
 const StartPage = () => {
   return (
@@ -14,7 +16,9 @@ const StartPage = () => {
               praesentium voluptate placeat, quod nulla aspernatur repellat
               neque sunt magnam illum animi dolorum illo?
             </h1>
-            <button>начать</button>
+            <Button className="firstPage__button" color="inherit">
+              <NavLink to="/addingFilms">Начать</NavLink>
+            </Button>
           </div>
         </div>
       </AnimatedPage>

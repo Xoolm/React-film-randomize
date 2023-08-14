@@ -1,3 +1,4 @@
+@import "../../style//mixin_font-size";
 .enterActive {
   opacity: 0;
 }
@@ -9,14 +10,17 @@
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
 .userWrapper {
   display: flex;
   flex-direction: column;
   position: relative;
   width: 364px;
   .userWrapper__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
-    text-align: center;
     color: #8febe6;
     box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
       0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
@@ -26,7 +30,7 @@
       0 0 11px #30a3ba;
     border-radius: 20px;
     padding: 10px 0;
-    font-size: 20px;
+    @include adaptiv-font(17, 15);
     font-weight: 700;
   }
   .userWrapper__remove {
@@ -46,6 +50,11 @@
     .userWrapper__remove__icon {
       color: #bdbdbd;
     }
+  }
+}
+@media (max-width: 450px) {
+  .userWrapper {
+    width: 280px;
   }
 }
 @keyframes neon-1 {
