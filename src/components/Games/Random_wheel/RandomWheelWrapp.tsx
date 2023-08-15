@@ -5,17 +5,20 @@ import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomWheel from "./components/RandomWheel";
 import Wheel from "./_RandomWheelWrapp.module.scss";
 import { Button } from "@mui/material";
+import FilmWinner from "../../FilmWinner/FilmWinner";
 
 interface RandomWheelProps {
   filmPlate: IFilm[];
   setFilmPlate: (arg0: IFilm[]) => void;
   numbers: number[];
+  winner: boolean;
 }
 
 const RandomWheelWrapp: FC<RandomWheelProps> = ({
   filmPlate,
   setFilmPlate,
   numbers,
+  winner,
 }) => {
   const [mustSpin, setMustSpin] = useState(false);
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
@@ -40,27 +43,27 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
       }, 11500);
   }, [random, idFIlmWinner]);
 
-  // const [winner, setWinner] = useState<any>(undefined);
-  // useEffect(() => {
-  //   if (filmPlate?.length === 1) {
-  //     filmPlate.map((film) => {
-  //       setWinner(film.id);
-  //     });
-  //   }
-  // }, [filmPlate]);
-
   return (
-    <div className={Wheel.wheelWrapper}>
-      <RandomWheel
-        setMustSpin={setMustSpin}
-        mustSpin={mustSpin}
-        prizeNumber={prizeNumber}
-        filmPlate={filmPlate}
-      />
-      <Button className={Wheel.addWinner} onClick={handleSpinClick}>
-        Выбрать победителя
-      </Button>
-    </div>
+    <>
+      {winner ? (
+        <div className={Wheel.winnerWrapper}>
+          {filmPlate &&
+            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+        </div>
+      ) : (
+        <div className={Wheel.wheelWrapper}>
+          <RandomWheel
+            setMustSpin={setMustSpin}
+            mustSpin={mustSpin}
+            prizeNumber={prizeNumber}
+            filmPlate={filmPlate}
+          />
+          <Button className={Wheel.addWinner} onClick={handleSpinClick}>
+            Выбрать победителя
+          </Button>
+        </div>
+      )}
+    </>
   );
 };
 

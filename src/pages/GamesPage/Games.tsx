@@ -3,7 +3,7 @@ import AnimatedPage from "../AnimatedPages";
 import { Container } from "@mui/material";
 import RandomWheelWrapp from "../../components/Games/Random_wheel/RandomWheelWrapp";
 import RandomCardOutWrapp from "../../components/Games/Random_card_out/RandomCardOutWrapp";
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import MysteryCardWrapp from "../../components/Games/MysteryCardWrapp/MysteryCardWrapp";
 import { NumbersContext } from "../../context";
 import { IFilm } from "../../models/IFilm";
@@ -14,6 +14,7 @@ const FilmsTemplate = () => {
   const [game, setGame] = useState<any>(0);
   const { allFilms } = useContext(NumbersContext);
   const [filmPlate, setFilmPlate] = useState<IFilm[]>([]);
+  const [winner, setWinner] = useState(false);
   useMemo(() => setFilmPlate(allFilms), [allFilms]);
   const numbers: number[] = [];
   filmPlate &&
@@ -27,7 +28,17 @@ const FilmsTemplate = () => {
     { value: 2, label: "Колесо рандома" },
     { value: 3, label: "Выбор карточек" },
   ];
-  console.log(game);
+  // console.log(filmPlate);
+  // console.log(allFilms);
+  // console.log(winner);
+
+  useEffect(() => {
+    if (filmPlate?.length === 1) {
+      setTimeout(() => {
+        setWinner(true);
+      }, 3500);
+    }
+  }, [filmPlate]);
 
   return (
     <AnimatedPage>
@@ -53,31 +64,25 @@ const FilmsTemplate = () => {
               }),
             }}
           />
-          {/* <div className={Games.selectWrapper}>
-            <select
-              className={Games.selectGame}
-              value={game}
-              onChange={(e) => setGame(Number(e.target.value))}
-            >
-              <option disabled value={0}>
-                Выберите игру
-              </option>
-              <option value={1}>Карточки на выбывание</option>
-              <option value={2}>Колесо рандома</option>
-              <option value={3}>Выбор карточек</option>
-            </select>
-          </div> */}
           <div className={Games.templateWrapp}>
             {game.value === 1 ? (
               <RandomCardOutWrapp
                 filmPlate={filmPlate}
                 numbers={numbers}
                 setFilmPlate={setFilmPlate}
+                winner={winner}
               />
             ) : null}
-            {game.value === 3 ? <MysteryCardWrapp /> : null}
+            {game.value === 3 ? (
+              <MysteryCardWrapp
+                filmPlate={filmPlate}
+                setFilmPlate={setFilmPlate}
+                winner={winner}
+              />
+            ) : null}
             {game.value === 2 ? (
               <RandomWheelWrapp
+                winner={winner}
                 filmPlate={filmPlate}
                 numbers={numbers}
                 setFilmPlate={setFilmPlate}

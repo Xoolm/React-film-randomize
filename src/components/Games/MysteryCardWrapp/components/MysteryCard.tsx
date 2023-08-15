@@ -4,15 +4,20 @@ import Card from "./_MysteryCard.module.scss";
 
 interface FilmCard {
   film: IFilm;
+  onDelete: (id: number) => void;
 }
 
-const MysteryCard: FC<FilmCard> = ({ film }) => {
+const MysteryCard: FC<FilmCard> = ({ film, onDelete }) => {
   const [hideWinner, setHideWinner] = useState(false);
+  const handleDelete = () => {
+    onDelete(film.id);
+    setHideWinner(true);
+  };
 
   return (
     <div
       className={hideWinner ? Card.filmCardOut : Card.filmCard}
-      onClick={() => setHideWinner(true)}
+      onClick={handleDelete}
     >
       <div className={hideWinner ? Card.isFlipped : Card.card}>
         <div className={Card.filmCard__back}>

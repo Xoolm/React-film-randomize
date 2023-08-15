@@ -16,7 +16,6 @@ const NavBar: FC<NavBarProps> = ({ active, setActive }) => {
   const LinkBehavior = React.forwardRef<any, Omit<RouterLinkProps, "to">>(
     (props, ref) => <RouterLink ref={ref} to="/" {...props} />
   );
-  console.log(active);
   return (
     <div
       className={active ? "menu active" : "menu"}

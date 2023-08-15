@@ -11,8 +11,6 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 function App() {
   const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
   const numbers: number[] = [];
-  console.log(allFilms);
-  console.log(numbers);
 
   allFilms &&
     allFilms.forEach((film: IFilm) => {

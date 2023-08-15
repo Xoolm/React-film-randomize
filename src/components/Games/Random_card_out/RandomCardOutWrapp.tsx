@@ -5,17 +5,20 @@ import { IFilm } from "../../../models/IFilm";
 import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomCard from "./components/RandomCard";
 import { Button } from "@mui/material";
+import FilmWinner from "../../FilmWinner/FilmWinner";
 
 interface RandomCardOutWrappProps {
   filmPlate: IFilm[];
   setFilmPlate: (arg0: IFilm[]) => void;
   numbers: number[];
+  winner: boolean;
 }
 
 const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({
   filmPlate,
   setFilmPlate,
   numbers,
+  winner,
 }) => {
   const { allFilms } = useContext(NumbersContext);
   const [getRandom, { data: random }] = getRandNum.useLazyGetRandNumQuery();
@@ -30,29 +33,29 @@ const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({
     setFilmPlate(filmPlate?.filter((film) => film.id !== droppedOut));
   }, [random, droppedOut]);
 
-  // const [winner, setWinner] = useState<any>(undefined);
-  // useEffect(() => {
-  //   if (filmPlate?.length === 1) {
-  //     filmPlate.map((film) => {
-  //       setWinner(film.id);
-  //     });
-  //   }
-  // }, [filmPlate]);
-
   // let max = filmPlate?.reduce((acc, curr) =>
   //   acc.chance >= curr.chance ? acc : curr
   // );
   // let bigBoy = max?.id;
   return (
-    <div className={CardOut.randomCardWrapp}>
-      {allFilms &&
-        allFilms.map((film) => (
-          <RandomCard key={film.id} film={film} droppedOut={droppedOut} />
-        ))}
-      <Button className={CardOut.addWinner_button} onClick={pickAWinner}>
-        Выбрать победителя
-      </Button>
-    </div>
+    <>
+      {winner ? (
+        <div className={CardOut.winnerWrapper}>
+          {filmPlate &&
+            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+        </div>
+      ) : (
+        <div className={CardOut.randomCardWrapp}>
+          {allFilms &&
+            allFilms.map((film) => (
+              <RandomCard key={film.id} film={film} droppedOut={droppedOut} />
+            ))}
+          <Button className={CardOut.addWinner_button} onClick={pickAWinner}>
+            Выбрать победителя
+          </Button>
+        </div>
+      )}
+    </>
   );
 };
 

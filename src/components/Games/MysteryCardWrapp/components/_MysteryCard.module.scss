@@ -114,6 +114,7 @@
   animation-duration: 4s;
   transition: 500ms ease-in;
   @include adaptiv-font(16, 9);
+  margin: auto auto;
 }
 @media (max-width: 1000px) {
   .filmCardOut {
@@ -146,7 +147,7 @@
 
   50% {
     opacity: 1;
-    transform: scale(2.3);
+    transform: scale(1.6);
   }
 
   100% {

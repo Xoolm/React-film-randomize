@@ -51,6 +51,7 @@ const AddUserForm: FC<AddUserProps> = ({ onCreate }) => {
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Добавить пользователя"
               value={userName}
+              maxLength={20}
             />
             <Fab
               onClick={handleCreate}

@@ -1,14 +1,26 @@
-import { useContext, useMemo, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import { NumbersContext } from "../../../context";
 import Mystery from "./_MysteryCardWrapp.module.scss";
 import MysteryCard from "./components/MysteryCard";
 import { IFilm } from "../../../models/IFilm";
+import FilmWinner from "../../FilmWinner/FilmWinner";
 
-const MysteryCardWrapp = () => {
+interface MysteryCardOutWrappProps {
+  filmPlate: IFilm[];
+  setFilmPlate: (arg0: IFilm[]) => void;
+  winner: boolean;
+}
+
+const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({
+  winner,
+  filmPlate,
+  setFilmPlate,
+}) => {
   const { allFilms } = useContext(NumbersContext);
   const [mysteryCard, setMysteryCard] = useState<IFilm[]>();
+
   useMemo(() => setMysteryCard(allFilms), [allFilms]);
-  const shuffle = (array: IFilm[]) => {
+  const shuffle = (array: IFilm[], arr: IFilm[]) => {
     let m = mysteryCard?.length,
       t,
       i;
@@ -20,13 +32,30 @@ const MysteryCardWrapp = () => {
     }
     return array;
   };
-  shuffle(mysteryCard!);
+  useEffect(() => {
+    shuffle(mysteryCard!, filmPlate!);
+  }, []);
+
+  const handleDelete = (id: number) => {
+    setFilmPlate(filmPlate.filter((film: IFilm) => film.id !== id));
+  };
 
   return (
-    <div className={Mystery.mysteryCardWrapp}>
-      {mysteryCard &&
-        mysteryCard.map((film) => <MysteryCard key={film.id} film={film} />)}
-    </div>
+    <>
+      {winner ? (
+        <div className={Mystery.winnerWrapper}>
+          {filmPlate &&
+            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+        </div>
+      ) : (
+        <div className={Mystery.mysteryCardWrapp}>
+          {mysteryCard &&
+            mysteryCard.map((film) => (
+              <MysteryCard onDelete={handleDelete} key={film.id} film={film} />
+            ))}
+        </div>
+      )}
+    </>
   );
 };
 
