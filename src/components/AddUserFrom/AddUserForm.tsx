@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import UserForm from "./_AddUserForm.module.scss";
 import { Fab } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
@@ -13,6 +13,10 @@ const AddUserForm: FC<AddUserProps> = ({ onCreate }) => {
   const [showButton, setShowButton] = useState(true);
   const [showInput, setShowInput] = useState(false);
   const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    setShowInput(true);
+  }, []);
 
   const handleShowInput = () => {
     setShowInput(false);

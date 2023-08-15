@@ -8,7 +8,6 @@ import MysteryCardWrapp from "../../components/Games/MysteryCardWrapp/MysteryCar
 import { NumbersContext } from "../../context";
 import { IFilm } from "../../models/IFilm";
 import Select from "react-select";
-import { InputActionMeta } from "react-select/dist/declarations/src";
 
 const FilmsTemplate = () => {
   const [game, setGame] = useState<any>(0);
@@ -28,9 +27,6 @@ const FilmsTemplate = () => {
     { value: 2, label: "Колесо рандома" },
     { value: 3, label: "Выбор карточек" },
   ];
-  // console.log(filmPlate);
-  // console.log(allFilms);
-  // console.log(winner);
 
   useEffect(() => {
     if (filmPlate?.length === 1) {
@@ -43,6 +39,7 @@ const FilmsTemplate = () => {
   return (
     <AnimatedPage>
       <div className={Games.FilmsChoisePage__background}>
+        <></>
         <Container
           sx={{
             display: "flex",

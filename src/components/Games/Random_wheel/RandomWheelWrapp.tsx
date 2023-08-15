@@ -40,7 +40,7 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
     isSuccess &&
       setTimeout(() => {
         setFilmPlate(filmPlate?.filter((film) => film.id !== idFIlmWinner));
-      }, 11500);
+      }, 12500);
   }, [random, idFIlmWinner]);
 
   return (
