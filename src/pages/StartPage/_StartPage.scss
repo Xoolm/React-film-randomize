@@ -1,5 +1,8 @@
+@import "../../style/mixin_font-size";
 .firstPageWrapper {
   background-image: url("./image/background_start-page.svg");
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
   background-size: cover;
   height: calc(100vh - 170px);
   display: flex;
@@ -14,7 +17,7 @@
     .ContentWrapper__title {
       text-align: center;
       color: white;
-      font-size: 25px;
+      @include adaptiv-font(20, 14);
     }
     .firstPage__button {
       margin-top: 20px;
@@ -37,6 +40,39 @@
             inset 0 0 1.3rem rgb(48, 163, 186);
           animation: neon-3 3s steps(1, start) infinite reverse;
         }
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .firstPageWrapper {
+    background-position: 0% 50%;
+    .ContentWrapper {
+      width: 550px;
+      margin-right: 20px;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .firstPageWrapper {
+    background-image: url("./image/1page_mobile_background.svg");
+    background-size: cover;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-items: normal;
+    justify-content: center;
+    .ContentWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 550px;
+      margin-right: 0;
+      margin-top: 70px;
+      padding: 0 20px 0 20px;
+      .ContentWrapper__title {
+        text-align: center;
+        color: white;
+        @include adaptiv-font(20, 14);
       }
     }
   }

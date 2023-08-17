@@ -7,6 +7,7 @@ import { routes } from "./router";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header/Header";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
@@ -48,6 +49,7 @@ function App() {
             <Route path="*" element={<Navigate to="/HomePage" />} />
           </Routes>
         </AnimatePresence>
+        <Footer />
       </NumbersContext.Provider>
     </div>
   );
