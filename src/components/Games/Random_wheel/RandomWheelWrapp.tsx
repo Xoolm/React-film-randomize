@@ -46,7 +46,7 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
   return (
     <>
       {winner ? (
-        <div className={Wheel.winnerWrapper}>
+        <div className={Wheel.randomWheelWrapp}>
           {filmPlate &&
             filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
         </div>

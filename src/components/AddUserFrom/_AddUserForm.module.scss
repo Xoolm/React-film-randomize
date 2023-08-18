@@ -59,6 +59,12 @@
           outline: none;
         }
       }
+      @media (max-width: 450px) {
+        .Name__input {
+          min-width: auto;
+          width: 100%;
+        }
+      }
       .success {
         margin: 12px 0 0 -40px;
         width: 27px;
@@ -131,5 +137,20 @@
     .openInput_icon {
       font-size: 35px;
     }
+  }
+  @media (max-width: 450px) {
+    .closeInput {
+      margin: 85px 0 0 87px;
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .UserFormWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 364px;
   }
 }

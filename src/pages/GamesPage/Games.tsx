@@ -8,6 +8,7 @@ import MysteryCardWrapp from "../../components/Games/MysteryCardWrapp/MysteryCar
 import { NumbersContext } from "../../context";
 import { IFilm } from "../../models/IFilm";
 import Select from "react-select";
+import "../../style/_custom-select.scss";
 
 const FilmsTemplate = () => {
   const [game, setGame] = useState<any>(0);
@@ -15,6 +16,15 @@ const FilmsTemplate = () => {
   const [filmPlate, setFilmPlate] = useState<IFilm[]>([]);
   const [winner, setWinner] = useState(false);
   useMemo(() => setFilmPlate(allFilms), [allFilms]);
+  useEffect(() => {
+    if (filmPlate.length === 0) {
+      setGame(4);
+    }
+    // if (filmPlate.length === 1) {
+    //   setGame(5);
+    // }
+  }, [game]);
+
   const numbers: number[] = [];
   filmPlate &&
     filmPlate.forEach((film) => {
@@ -48,11 +58,14 @@ const FilmsTemplate = () => {
           }}
         >
           <Select
-            className={Games.selectGame}
+            className={Games.select}
+            classNamePrefix="customSelect"
+            isDisabled={game === 4 || game === 5 ? true : false}
+            isSearchable={false}
             options={options}
             value={game}
             onChange={setGame}
-            placeholder="Выберите вид игры"
+            placeholder={game === 0 ? "Выберите вид игры" : "Добавьте фильмы"}
             styles={{
               control: (baseStyles, state) => ({
                 ...baseStyles,
@@ -62,6 +75,13 @@ const FilmsTemplate = () => {
             }}
           />
           <div className={Games.templateWrapp}>
+            <div className={Games.alert}>
+              {game === 0 ? <h3>Выберите игру</h3> : null}
+              {game === 4 ? <h3>Вы не добавили ни одного фильма</h3> : null}
+              {game === 5 ? (
+                <h3>Добавление одного фильма не имеет смысла, одумайтесь!</h3>
+              ) : null}
+            </div>
             {game.value === 1 ? (
               <RandomCardOutWrapp
                 filmPlate={filmPlate}
@@ -84,9 +104,6 @@ const FilmsTemplate = () => {
                 numbers={numbers}
                 setFilmPlate={setFilmPlate}
               />
-            ) : null}
-            {game.value === 0 ? (
-              <h3 style={{ color: "white" }}>Выберите игру</h3>
             ) : null}
           </div>
         </Container>
