@@ -12,6 +12,7 @@ interface RandomWheelProps {
   setFilmPlate: (arg0: IFilm[]) => void;
   numbers: number[];
   winner: boolean;
+  setWinner: (arg0: boolean) => void;
 }
 
 const RandomWheelWrapp: FC<RandomWheelProps> = ({
@@ -19,6 +20,7 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
   setFilmPlate,
   numbers,
   winner,
+  setWinner,
 }) => {
   const [mustSpin, setMustSpin] = useState(false);
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
@@ -42,6 +44,12 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
         setFilmPlate(filmPlate?.filter((film) => film.id !== idFIlmWinner));
       }, 12500);
   }, [random, idFIlmWinner]);
+
+  useEffect(() => {
+    if (filmPlate?.length === 1) {
+      setWinner(true);
+    }
+  }, [filmPlate]);
 
   return (
     <>

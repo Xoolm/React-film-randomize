@@ -1,21 +1,5 @@
 import { FC } from "react";
 import { Wheel } from "react-custom-roulette";
-import { IFilm } from "../../../../models/IFilm";
-
-const data = [
-  { option: "Солнцестояние" },
-  { option: "Реинкарнация" },
-  { option: "Пила" },
-  { option: "Черная дыра" },
-  { option: "Дом который построил Джек" },
-  { option: "Меню" },
-  { option: "Завтрак у тиффани" },
-  { option: "Ешь молись люби" },
-  { option: "Вассаби" },
-  { option: "Земляничная поляна" },
-  { option: "1" },
-  { option: "2" },
-];
 
 interface WheelProps {
   filmPlate: any;

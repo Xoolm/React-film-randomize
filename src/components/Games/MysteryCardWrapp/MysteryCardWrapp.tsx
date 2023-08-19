@@ -4,6 +4,7 @@ import Mystery from "./_MysteryCardWrapp.module.scss";
 import MysteryCard from "./components/MysteryCard";
 import { IFilm } from "../../../models/IFilm";
 import FilmWinner from "../../FilmWinner/FilmWinner";
+import { useShuffle } from "../../../hooks/useShuffle";
 
 interface MysteryCardOutWrappProps {
   filmPlate: IFilm[];
@@ -19,26 +20,13 @@ const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({
   const { allFilms } = useContext(NumbersContext);
   const [mysteryCard, setMysteryCard] = useState<IFilm[]>();
 
-  useMemo(() => setMysteryCard(allFilms), [allFilms]);
-  const shuffle = (array: IFilm[], arr: IFilm[]) => {
-    let m = mysteryCard?.length,
-      t,
-      i;
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-    return array;
-  };
-  useEffect(() => {
-    shuffle(mysteryCard!, filmPlate!);
-  }, []);
-
   const handleDelete = (id: number) => {
     setFilmPlate(filmPlate.filter((film: IFilm) => film.id !== id));
   };
+
+  const shuffleAarray = [...allFilms];
+  const shafle = useShuffle(shuffleAarray!);
+  useMemo(() => setMysteryCard(shafle), [allFilms]);
 
   return (
     <>

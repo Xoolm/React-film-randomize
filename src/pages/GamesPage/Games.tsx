@@ -20,9 +20,6 @@ const FilmsTemplate = () => {
     if (filmPlate.length === 0) {
       setGame(4);
     }
-    // if (filmPlate.length === 1) {
-    //   setGame(5);
-    // }
   }, [game]);
 
   const numbers: number[] = [];
@@ -103,6 +100,7 @@ const FilmsTemplate = () => {
                 filmPlate={filmPlate}
                 numbers={numbers}
                 setFilmPlate={setFilmPlate}
+                setWinner={setWinner}
               />
             ) : null}
           </div>
