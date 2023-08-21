@@ -16,4 +16,4 @@
 * React Transition Group
 
 ## Ссылки проекта
-Проект доступен по ссылке - https://xoolm.github.io/testovoe__Picasso/
+Проект доступен по ссылке - https://xoolm.github.io/React-film-randomize/
