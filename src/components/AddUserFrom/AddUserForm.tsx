@@ -1,21 +1,27 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import UserForm from "./_AddUserForm.module.scss";
 import { Fab } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { CSSTransition } from "react-transition-group";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import { NumbersContext } from "../../context";
+import { IUser } from "../../models/IUser";
 
 interface AddUserProps {
   onCreate: (userName: string) => void;
+  users: IUser;
 }
-const AddUserForm: FC<AddUserProps> = ({ onCreate }) => {
+const AddUserForm: FC<AddUserProps> = ({ onCreate, users }) => {
+  const { allFilms } = useContext(NumbersContext);
   const [showButton, setShowButton] = useState(true);
   const [showInput, setShowInput] = useState(false);
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    setShowInput(true);
+    if (users.length === 0) {
+      setShowInput(true);
+    }
   }, []);
 
   const handleShowInput = () => {

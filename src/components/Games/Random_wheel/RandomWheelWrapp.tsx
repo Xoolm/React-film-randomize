@@ -8,20 +8,12 @@ import { Button } from "@mui/material";
 import FilmWinner from "../../FilmWinner/FilmWinner";
 
 interface RandomWheelProps {
-  filmPlate: IFilm[];
-  setFilmPlate: (arg0: IFilm[]) => void;
-  numbers: number[];
   winner: boolean;
   setWinner: (arg0: boolean) => void;
 }
 
-const RandomWheelWrapp: FC<RandomWheelProps> = ({
-  filmPlate,
-  setFilmPlate,
-  numbers,
-  winner,
-  setWinner,
-}) => {
+const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
+  const { numbers, filmPlate, setFilmPlate } = useContext(NumbersContext);
   const [mustSpin, setMustSpin] = useState(false);
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
   const [prizeNumber, setPrizeNumber] = useState<any>();

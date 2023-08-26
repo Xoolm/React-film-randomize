@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { IFilm } from "../../models/IFilm";
 import item from "./_FilmItem.module.scss";
 import { Fab } from "@mui/material";
@@ -15,38 +15,44 @@ interface FilmItemProps {
 }
 
 const FilmItem: FC<FilmItemProps> = ({ film }) => {
-  const { allFilms, setAllFilms } = useContext(NumbersContext);
+  const { allFilms, setAllFilms, numbers } = useContext(NumbersContext);
   const [editInput, setEditInput] = useState(false);
   const [title, setTitle] = useState(film.option);
-  const [optionSize, setOptionSize] = useState(film.optionSize);
+  const [value, setValue] = useState(film.value);
 
   const handlePlus = () => {
-    if (optionSize <= 9) {
-      setOptionSize((prev) => prev + 1);
+    if (value <= 9) {
+      setValue((prev) => prev + 1);
     }
   };
   const handleMinus = () => {
-    if (optionSize >= 2) {
-      setOptionSize((prev) => prev - 1);
+    if (value >= 2) {
+      setValue((prev) => prev - 1);
     }
   };
-
   const handleRemove = (e: React.MouseEvent) => {
     setAllFilms(allFilms.filter((item) => item.id !== film.id));
   };
 
   const hanldeUpdate = (e: React.MouseEvent) => {
-    setAllFilms(
-      allFilms.map((item) => {
-        if (film.id === item.id) {
-          return { ...item, option: title, optionSize: optionSize };
-        } else {
-          return item;
-        }
-      })
-    );
+    const updateFilms = allFilms.map((item) => {
+      if (film.id === item.id) {
+        return {
+          ...item,
+          option: title,
+          optionSize: 11 - value,
+          value: value,
+          quantity: Math.floor(110 - value * 10),
+        };
+      } else {
+        return item;
+      }
+    });
+    setAllFilms(updateFilms);
     setEditInput(false);
   };
+
+  const chance = Math.round((film.quantity / numbers.length) * 100);
 
   return (
     <div className={item.filmWrapp}>
@@ -63,7 +69,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
               <Fab className={item.counterWrapp__plus} onClick={handlePlus}>
                 <AddIcon />
               </Fab>
-              <div className={item.counterWrapp__display}>{optionSize}</div>
+              <div className={item.counterWrapp__display}>{value}</div>
               <Fab className={item.counterWrapp__minus} onClick={handleMinus}>
                 <RemoveIcon />
               </Fab>
@@ -110,8 +116,8 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
             <DeleteIcon className={item.filmWrapp__remove__icon} />
           </Fab>
           <div className={item.chanceWrapp}>
-            <p className={item.filmFactor}>{film.optionSize} | </p>
-            <p className={item.filmChance}>| {film.chance} %</p>
+            <p className={item.filmFactor}>{film.value} | </p>
+            <p className={item.filmChance}>| {chance} %</p>
           </div>
         </>
       )}

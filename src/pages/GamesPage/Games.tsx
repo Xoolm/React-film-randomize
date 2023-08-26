@@ -12,23 +12,14 @@ import "../../style/_custom-select.scss";
 
 const FilmsTemplate = () => {
   const [game, setGame] = useState<any>(0);
-  const { allFilms } = useContext(NumbersContext);
-  const [filmPlate, setFilmPlate] = useState<IFilm[]>([]);
+  const { allFilms, filmPlate } = useContext(NumbersContext);
   const [winner, setWinner] = useState(false);
-  useMemo(() => setFilmPlate(allFilms), [allFilms]);
   useEffect(() => {
     if (filmPlate.length === 0) {
       setGame(4);
     }
   }, [game]);
 
-  const numbers: number[] = [];
-  filmPlate &&
-    filmPlate.forEach((film) => {
-      for (let i = 0; i < 100; i++) {
-        numbers.push(film.id);
-      }
-    });
   const options = [
     { value: 1, label: "Карточки на выбывание" },
     { value: 2, label: "Колесо рандома" },
@@ -79,29 +70,10 @@ const FilmsTemplate = () => {
                 <h3>Добавление одного фильма не имеет смысла, одумайтесь!</h3>
               ) : null}
             </div>
-            {game.value === 1 ? (
-              <RandomCardOutWrapp
-                filmPlate={filmPlate}
-                numbers={numbers}
-                setFilmPlate={setFilmPlate}
-                winner={winner}
-              />
-            ) : null}
-            {game.value === 3 ? (
-              <MysteryCardWrapp
-                filmPlate={filmPlate}
-                setFilmPlate={setFilmPlate}
-                winner={winner}
-              />
-            ) : null}
+            {game.value === 1 ? <RandomCardOutWrapp winner={winner} /> : null}
+            {game.value === 3 ? <MysteryCardWrapp winner={winner} /> : null}
             {game.value === 2 ? (
-              <RandomWheelWrapp
-                winner={winner}
-                filmPlate={filmPlate}
-                numbers={numbers}
-                setFilmPlate={setFilmPlate}
-                setWinner={setWinner}
-              />
+              <RandomWheelWrapp winner={winner} setWinner={setWinner} />
             ) : null}
           </div>
         </Container>

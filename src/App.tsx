@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { NumbersContext } from "./context";
 import "./style/main.css";
 import { IFilm } from "./models/IFilm";
@@ -8,34 +7,27 @@ import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header/Header";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Footer from "./components/footer/Footer";
+import { useMemo, useState } from "react";
 
 function App() {
   const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
+  const [filmPlate, setFilmPlate] = useState<IFilm[]>([]);
+  useMemo(() => setFilmPlate(allFilms), [allFilms]);
   const numbers: number[] = [];
 
-  allFilms &&
-    allFilms.forEach((film: IFilm) => {
-      for (let i = 0; i < 100 / film.optionSize; i++) {
+  filmPlate &&
+    filmPlate.forEach((film: IFilm) => {
+      for (let i = 0; i < film.quantity; i++) {
         numbers.push(film.id);
       }
     });
 
-  useEffect(() => {
-    if (allFilms) {
-      const updatedFilms = allFilms.map((film: IFilm) => {
-        const percentage = Math.floor(
-          (film.optionSize / numbers.length) * 10000
-        );
-        return { ...film, chance: percentage };
-      });
-      setAllFilms(updatedFilms);
-    }
-  }, [numbers.length, setAllFilms]);
-
   const location = useLocation();
   return (
     <div className="App">
-      <NumbersContext.Provider value={{ numbers, allFilms, setAllFilms }}>
+      <NumbersContext.Provider
+        value={{ numbers, allFilms, setAllFilms, filmPlate, setFilmPlate }}
+      >
         <Header />
         <AnimatePresence mode="wait">
           <Routes key={location.pathname} location={location}>

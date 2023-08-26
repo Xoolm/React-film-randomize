@@ -28,21 +28,21 @@ const NavBar: FC<NavBarProps> = ({ active, setActive }) => {
           color="inherit"
           onClick={() => setActive(false)}
         >
-          <NavLink to="/HomePage">Home</NavLink>
+          <NavLink to="/HomePage">Главная</NavLink>
         </Button>
         <Button
           className="navLink__btn"
           color="inherit"
           onClick={() => setActive(false)}
         >
-          <NavLink to="/addingFilms">Adding</NavLink>
+          <NavLink to="/addingFilms">Добавить</NavLink>
         </Button>
         <Button
           className="navLink__btn"
           color="inherit"
           onClick={() => setActive(false)}
         >
-          <NavLink to="/choiceFilms">Game</NavLink>
+          <NavLink to="/choiceFilms">Игры</NavLink>
         </Button>
       </div>
     </div>

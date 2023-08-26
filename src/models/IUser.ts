@@ -1,6 +1,5 @@
-import { IFilm } from "./IFilm";
-
 export interface IUser {
+  length: number;
   id: number;
   userName: string;
 }

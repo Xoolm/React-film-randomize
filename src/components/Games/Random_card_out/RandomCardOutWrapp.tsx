@@ -8,24 +8,19 @@ import { Button } from "@mui/material";
 import FilmWinner from "../../FilmWinner/FilmWinner";
 
 interface RandomCardOutWrappProps {
-  filmPlate: IFilm[];
-  setFilmPlate: (arg0: IFilm[]) => void;
-  numbers: number[];
   winner: boolean;
 }
 
-const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({
-  filmPlate,
-  setFilmPlate,
-  numbers,
-  winner,
-}) => {
-  const { allFilms } = useContext(NumbersContext);
+const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
+  const { allFilms, numbers, filmPlate, setFilmPlate } =
+    useContext(NumbersContext);
   const [getRandom, { data: random }] = getRandNum.useLazyGetRandNumQuery();
   const [droppedOut, setDroppedOut] = useState<any>();
   const pickAWinner = async () => {
     await getRandom(numbers?.length);
   };
+  console.log(random?.result.random.data!);
+
   useEffect(() => {
     filmPlate?.map((film) => {
       return setDroppedOut(numbers[random?.result.random.data!]);

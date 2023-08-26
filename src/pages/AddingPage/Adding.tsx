@@ -59,7 +59,7 @@ const FilmContainer = () => {
                   <UserFilms onDelete={handleDelete} user={user} />
                 </CSSTransition>
               ))}
-            <AddUserForm onCreate={handleCreate} />
+            <AddUserForm users={users} onCreate={handleCreate} />
           </TransitionGroup>
           <Button className={Adding.adding__button} color="inherit">
             <NavLink to="/choiceFilms">Начать</NavLink>

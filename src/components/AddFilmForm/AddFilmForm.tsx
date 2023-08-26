@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useState } from "react";
+import React, { FC, useContext, useEffect, useRef, useState } from "react";
 import addForm from "./_AddFilmForm.module.scss";
 import { IUser } from "../../models/IUser";
 import { Fab } from "@mui/material";
@@ -8,7 +8,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CSSTransition } from "react-transition-group";
 import { NumbersContext } from "../../context";
-import { ADDRCONFIG } from "dns";
 
 interface AddFilmFormProps {
   user: IUser;
@@ -19,7 +18,13 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
   const [showButton, setShowButton] = useState(true);
   const [showInput, setShowInput] = useState(false);
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState<number>(1);
+  const [value, setValue] = useState(1);
+
+  useEffect(() => {
+    if (allFilms.length === 0) {
+      setShowInput(true);
+    }
+  }, []);
 
   const handleShowInput = () => {
     setShowInput(false);
@@ -31,22 +36,25 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
       userID: user.id,
       id: Date.now(),
       option: title,
-      optionSize: value,
+      optionSize: 11 - value,
+      value: value,
       chance: 1,
+      quantity: Math.floor(110 - value * 10),
     };
     setAllFilms([...allFilms, newFilm]);
     setTitle("");
+    setValue(1);
   };
   const nodeRef = useRef(null);
-  const [optionSize, setOptionSize] = useState(1);
+
   const handlePlus = () => {
-    if (optionSize <= 9) {
-      setOptionSize((prev) => prev + 1);
+    if (value <= 9) {
+      setValue((prev) => prev + 1);
     }
   };
   const handleMinus = () => {
-    if (optionSize >= 2) {
-      setOptionSize((prev) => prev - 1);
+    if (value >= 2) {
+      setValue((prev) => prev - 1);
     }
   };
   return (
@@ -82,7 +90,7 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
               <Fab className={addForm.counterWrapp__plus} onClick={handlePlus}>
                 <AddIcon />
               </Fab>
-              <div className={addForm.counterWrapp__display}>{optionSize}</div>
+              <div className={addForm.counterWrapp__display}>{value}</div>
               <Fab
                 className={addForm.counterWrapp__minus}
                 onClick={handleMinus}

@@ -4,4 +4,6 @@ export interface IFilm {
   option: string;
   optionSize: number;
   chance: number;
+  value: number;
+  quantity: number;
 }
