@@ -6,6 +6,7 @@ import RandomWheel from "./components/RandomWheel";
 import Wheel from "./_RandomWheelWrapp.module.scss";
 import { Button } from "@mui/material";
 import FilmWinner from "../../FilmWinner/FilmWinner";
+import { useTranslation } from "react-i18next";
 
 interface RandomWheelProps {
   winner: boolean;
@@ -13,6 +14,7 @@ interface RandomWheelProps {
 }
 
 const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
+  const { t } = useTranslation();
   const { numbers, filmPlate, setFilmPlate } = useContext(NumbersContext);
   const [mustSpin, setMustSpin] = useState(false);
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
@@ -59,7 +61,7 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
             filmPlate={filmPlate}
           />
           <Button className={Wheel.addWinner} onClick={handleSpinClick}>
-            Выбрать победителя
+            {t("gamesPage.randomWheel.button")}
           </Button>
         </div>
       )}

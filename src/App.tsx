@@ -14,15 +14,14 @@ function App() {
   const [filmPlate, setFilmPlate] = useState<IFilm[]>([]);
   useMemo(() => setFilmPlate(allFilms), [allFilms]);
   const numbers: number[] = [];
-
   filmPlate &&
     filmPlate.forEach((film: IFilm) => {
       for (let i = 0; i < film.quantity; i++) {
         numbers.push(film.id);
       }
     });
-
   const location = useLocation();
+
   return (
     <div className="App">
       <NumbersContext.Provider

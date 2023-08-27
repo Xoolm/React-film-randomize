@@ -1,5 +1,6 @@
 @import "../../style/mixin_font-size";
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -12,6 +13,8 @@
   box-shadow: 2px 2px 5px black;
   .logo {
     width: 300;
+  }
+  .logo2 {
   }
   .menuBurger {
     .menuBurger__icon {

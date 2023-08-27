@@ -6,12 +6,14 @@ import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomCard from "./components/RandomCard";
 import { Button } from "@mui/material";
 import FilmWinner from "../../FilmWinner/FilmWinner";
+import { useTranslation } from "react-i18next";
 
 interface RandomCardOutWrappProps {
   winner: boolean;
 }
 
 const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
+  const { t } = useTranslation();
   const { allFilms, numbers, filmPlate, setFilmPlate } =
     useContext(NumbersContext);
   const [getRandom, { data: random }] = getRandNum.useLazyGetRandNumQuery();
@@ -46,7 +48,7 @@ const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
               <RandomCard key={film.id} film={film} droppedOut={droppedOut} />
             ))}
           <Button className={CardOut.addWinner_button} onClick={pickAWinner}>
-            Выбрать победителя
+            {t("gamesPage.randomCardOutWrapp.button")}
           </Button>
         </div>
       )}

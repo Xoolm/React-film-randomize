@@ -3,16 +3,17 @@ import AnimatedPage from "../AnimatedPages";
 import { Container } from "@mui/material";
 import RandomWheelWrapp from "../../components/Games/Random_wheel/RandomWheelWrapp";
 import RandomCardOutWrapp from "../../components/Games/Random_card_out/RandomCardOutWrapp";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MysteryCardWrapp from "../../components/Games/MysteryCardWrapp/MysteryCardWrapp";
 import { NumbersContext } from "../../context";
-import { IFilm } from "../../models/IFilm";
 import Select from "react-select";
-import "../../style/_custom-select.scss";
+import "../../style/_custom-select-games.scss";
+import { useTranslation } from "react-i18next";
 
 const FilmsTemplate = () => {
+  const { t } = useTranslation();
   const [game, setGame] = useState<any>(0);
-  const { allFilms, filmPlate } = useContext(NumbersContext);
+  const { filmPlate } = useContext(NumbersContext);
   const [winner, setWinner] = useState(false);
   useEffect(() => {
     if (filmPlate.length === 0) {
@@ -21,9 +22,9 @@ const FilmsTemplate = () => {
   }, [game]);
 
   const options = [
-    { value: 1, label: "Карточки на выбывание" },
-    { value: 2, label: "Колесо рандома" },
-    { value: 3, label: "Выбор карточек" },
+    { value: 1, label: t("gamesPage.select.eliminationCards") },
+    { value: 2, label: t("gamesPage.select.randomWheel") },
+    { value: 3, label: t("gamesPage.select.choiceCard") },
   ];
 
   useEffect(() => {
@@ -53,9 +54,13 @@ const FilmsTemplate = () => {
             options={options}
             value={game}
             onChange={setGame}
-            placeholder={game === 0 ? "Выберите вид игры" : "Добавьте фильмы"}
+            placeholder={
+              game === 0
+                ? t("gamesPage.select.placeholder1")
+                : t("gamesPage.select.placeholder2")
+            }
             styles={{
-              control: (baseStyles, state) => ({
+              control: (baseStyles) => ({
                 ...baseStyles,
                 borderRadius: "20px",
                 padding: "5px 30px",
@@ -64,10 +69,16 @@ const FilmsTemplate = () => {
           />
           <div className={Games.templateWrapp}>
             <div className={Games.alert}>
-              {game === 0 ? <h3>Выберите игру</h3> : null}
-              {game === 4 ? <h3>Вы не добавили ни одного фильма</h3> : null}
+              {game === 0 ? (
+                <h3>{t("gamesPage.addingMessage.chooseAGame")}</h3>
+              ) : null}
+              {game === 4 ? (
+                <h3>{t("gamesPage.addingMessage.YouHaveNotAddedAnyMovies")}</h3>
+              ) : null}
               {game === 5 ? (
-                <h3>Добавление одного фильма не имеет смысла, одумайтесь!</h3>
+                <h3>
+                  {t("gamesPage.addingMessage.addingOneMovieDoesNotMakeSense")}
+                </h3>
               ) : null}
             </div>
             {game.value === 1 ? <RandomCardOutWrapp winner={winner} /> : null}

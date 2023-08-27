@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import AnimatedPage from "../AnimatedPages";
 import "./_StartPage.scss";
-import FilmContainer from "../AddingPage/Adding";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const StartPage = () => {
+  const { t } = useTranslation();
   return (
     <>
       <AnimatedPage>
@@ -17,7 +18,7 @@ const StartPage = () => {
               neque sunt magnam illum animi dolorum illo?
             </h1>
             <Button className="firstPage__button" color="inherit">
-              <NavLink to="/addingFilms">Начать</NavLink>
+              <NavLink to="/addingFilms">{t("firstPage.button")}</NavLink>
             </Button>
           </div>
         </div>

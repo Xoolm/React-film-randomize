@@ -10,6 +10,7 @@ import AddUserForm from "../../components/AddUserFrom/AddUserForm";
 import { NumbersContext } from "../../context";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const FilmContainer = () => {
   const { allFilms, setAllFilms } = useContext(NumbersContext);
@@ -27,6 +28,7 @@ const FilmContainer = () => {
     setAllFilms(allFilms.filter((film) => film.userID !== id));
   };
 
+  const { t } = useTranslation();
   return (
     <AnimatedPage>
       <div className={Adding.FilmsAddingPage__background}>
@@ -35,9 +37,9 @@ const FilmContainer = () => {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <div className={Adding.titleContainer}>
-            <h1>Правила игры:</h1>
-            <p>Добавьте игроков</p>
-            <p>Выберите список фильмов для каждого игрока</p>
+            <h1>{t("addingPage.rules.rules")}</h1>
+            <p>{t("addingPage.rules.added")}</p>
+            <p>{t("addingPage.rules.selected")}</p>
           </div>
           <TransitionGroup
             component="div"
@@ -62,7 +64,7 @@ const FilmContainer = () => {
             <AddUserForm users={users} onCreate={handleCreate} />
           </TransitionGroup>
           <Button className={Adding.adding__button} color="inherit">
-            <NavLink to="/choiceFilms">Начать</NavLink>
+            <NavLink to="/choiceFilms">{t("addingPage.button")}</NavLink>
           </Button>
         </Container>
       </div>
