@@ -54,14 +54,14 @@ function Header() {
         onChange={handleChange}
         className="LanguageChangeSelect_header"
       >
-        <MenuItem value={1}>
-          <ListItemIcon>
-            <RUS />
-          </ListItemIcon>
-        </MenuItem>
         <MenuItem value={2}>
           <ListItemIcon>
             <EN />
+          </ListItemIcon>
+        </MenuItem>
+        <MenuItem value={1}>
+          <ListItemIcon>
+            <RUS />
           </ListItemIcon>
         </MenuItem>
       </Select>
