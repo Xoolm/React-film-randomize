@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-film-randomize/static/css/main.c68dbbfd.css",
-    "main.js": "/React-film-randomize/static/js/main.fb5cb44f.js",
+    "main.css": "/React-film-randomize/static/css/main.e3954aaa.css",
+    "main.js": "/React-film-randomize/static/js/main.49e3395b.js",
     "static/media/background_start-page.svg": "/React-film-randomize/static/media/background_start-page.5fc35716a4dcf8400711.svg",
     "static/media/1page_mobile_background.svg": "/React-film-randomize/static/media/1page_mobile_background.37f19d1cd32325bdedda.svg",
     "static/media/background_adding-page.svg": "/React-film-randomize/static/media/background_adding-page.51eb02ac30bd5abb364d.svg",
@@ -12,11 +12,11 @@
     "index.html": "/React-film-randomize/index.html",
     "static/media/getFetch.cjs": "/React-film-randomize/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/ru.svg": "/React-film-randomize/static/media/ru.f760036294e1fff52a9a88663d0d7a46.svg",
-    "main.c68dbbfd.css.map": "/React-film-randomize/static/css/main.c68dbbfd.css.map",
-    "main.fb5cb44f.js.map": "/React-film-randomize/static/js/main.fb5cb44f.js.map"
+    "main.e3954aaa.css.map": "/React-film-randomize/static/css/main.e3954aaa.css.map",
+    "main.49e3395b.js.map": "/React-film-randomize/static/js/main.49e3395b.js.map"
   },
   "entrypoints": [
-    "static/css/main.c68dbbfd.css",
-    "static/js/main.fb5cb44f.js"
+    "static/css/main.e3954aaa.css",
+    "static/js/main.49e3395b.js"
   ]
 }
