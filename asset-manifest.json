@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/React-film-randomize/static/css/main.e3954aaa.css",
-    "main.js": "/React-film-randomize/static/js/main.49e3395b.js",
-    "static/media/background_start-page.svg": "/React-film-randomize/static/media/background_start-page.5fc35716a4dcf8400711.svg",
+    "main.css": "/React-film-randomize/static/css/main.ee1dac32.css",
+    "main.js": "/React-film-randomize/static/js/main.70a5201e.js",
+    "static/media/background_start-page.svg": "/React-film-randomize/static/media/background_start-page.7fd7baec88fe3bb10553.svg",
     "static/media/1page_mobile_background.svg": "/React-film-randomize/static/media/1page_mobile_background.37f19d1cd32325bdedda.svg",
     "static/media/background_adding-page.svg": "/React-film-randomize/static/media/background_adding-page.51eb02ac30bd5abb364d.svg",
     "static/media/Choise_Films_background.svg": "/React-film-randomize/static/media/Choise_Films_background.c10d6d30a1bae3be3cdf.svg",
@@ -12,11 +12,11 @@
     "index.html": "/React-film-randomize/index.html",
     "static/media/getFetch.cjs": "/React-film-randomize/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/ru.svg": "/React-film-randomize/static/media/ru.f760036294e1fff52a9a88663d0d7a46.svg",
-    "main.e3954aaa.css.map": "/React-film-randomize/static/css/main.e3954aaa.css.map",
-    "main.49e3395b.js.map": "/React-film-randomize/static/js/main.49e3395b.js.map"
+    "main.ee1dac32.css.map": "/React-film-randomize/static/css/main.ee1dac32.css.map",
+    "main.70a5201e.js.map": "/React-film-randomize/static/js/main.70a5201e.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3954aaa.css",
-    "static/js/main.49e3395b.js"
+    "static/css/main.ee1dac32.css",
+    "static/js/main.70a5201e.js"
   ]
 }
