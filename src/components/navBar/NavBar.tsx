@@ -40,7 +40,6 @@ const NavBar: FC<NavBarProps> = ({ active, setActive }) => {
       changeLanguage("en");
     }
   }, [value]);
-  console.log(value);
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);
   };

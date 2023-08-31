@@ -43,6 +43,25 @@
       }
     }
   }
+  @media (max-width: 1000px) {
+    .adding__button {
+      margin: 20px auto 50px;
+      padding: 0;
+      border-radius: 30px;
+      > a {
+        text-decoration: none;
+        padding: 15px 65px;
+        font-size: 20px;
+        transition: all 0.5s;
+        border-radius: 30px;
+        color: rgb(73, 127, 145);
+        transition: 0.3s;
+        box-shadow: 0 0 0.1rem rgb(255, 255, 255), 0 0 0.2rem rgb(255, 255, 255),
+          0 0 0.3rem rgb(48, 163, 186), 0 0 0.8rem rgb(48, 163, 186),
+          0 0 1rem rgb(48, 163, 186), inset 0 0 1.3rem rgb(48, 163, 186);
+      }
+    }
+  }
 }
 @media (max-width: 600px) {
   .FilmsAddingPage__background {

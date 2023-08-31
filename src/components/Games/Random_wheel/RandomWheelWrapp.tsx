@@ -1,6 +1,5 @@
-import React, { FC, useContext, useEffect, useMemo, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { NumbersContext } from "../../../context";
-import { IFilm } from "../../../models/IFilm";
 import { getRandNum } from "../../../services/RandomOrgAPI";
 import RandomWheel from "./components/RandomWheel";
 import Wheel from "./_RandomWheelWrapp.module.scss";
@@ -24,9 +23,14 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
   const randomNum = random?.result?.random?.data;
 
   const handleSpinClick = async () => {
-    await getRandom(numbers?.length);
-    setMustSpin(true);
+    if (mustSpin) {
+      return mustSpin;
+    } else {
+      await getRandom(numbers?.length);
+      setMustSpin(true);
+    }
   };
+  console.log(filmPlate);
   useEffect(() => {
     filmPlate?.map((film) => {
       let index = filmPlate.findIndex((el) => el.id === numbers[randomNum!]);

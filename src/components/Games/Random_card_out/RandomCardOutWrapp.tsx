@@ -21,7 +21,7 @@ const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
   const pickAWinner = async () => {
     await getRandom(numbers?.length);
   };
-  console.log(random?.result.random.data!);
+  console.log(filmPlate);
 
   useEffect(() => {
     filmPlate?.map((film) => {
@@ -30,10 +30,6 @@ const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
     setFilmPlate(filmPlate?.filter((film) => film.id !== droppedOut));
   }, [random, droppedOut]);
 
-  // let max = filmPlate?.reduce((acc, curr) =>
-  //   acc.chance >= curr.chance ? acc : curr
-  // );
-  // let bigBoy = max?.id;
   return (
     <>
       {winner ? (

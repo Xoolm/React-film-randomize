@@ -13,14 +13,13 @@ interface MysteryCardOutWrappProps {
 const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({ winner }) => {
   const { allFilms, filmPlate, setFilmPlate } = useContext(NumbersContext);
   const [mysteryCard, setMysteryCard] = useState<IFilm[]>();
-
-  const handleDelete = (id: number) => {
-    setFilmPlate(filmPlate.filter((film: IFilm) => film.id !== id));
-  };
-
   const shuffleAarray = [...allFilms];
   const shafle = useShuffle(shuffleAarray!);
   useMemo(() => setMysteryCard(shafle), [allFilms]);
+  const handleDelete = (id: number) => {
+    setFilmPlate(filmPlate.filter((film: IFilm) => film.id !== id));
+  };
+  console.log(filmPlate);
 
   return (
     <>

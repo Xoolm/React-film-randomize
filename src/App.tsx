@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Footer from "./components/footer/Footer";
 import { useMemo, useState } from "react";
+import ScrollToTop from "./router/ScrollToTop";
 
 function App() {
   const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
@@ -29,16 +30,18 @@ function App() {
       >
         <Header />
         <AnimatePresence mode="wait">
-          <Routes key={location.pathname} location={location}>
-            {routes.map((route) => (
-              <Route
-                key={route.path}
-                element={<route.element />}
-                path={route.path}
-              />
-            ))}
-            <Route path="*" element={<Navigate to="/HomePage" />} />
-          </Routes>
+          <ScrollToTop>
+            <Routes key={location.pathname} location={location}>
+              {routes.map((route) => (
+                <Route
+                  key={route.path}
+                  element={<route.element />}
+                  path={route.path}
+                />
+              ))}
+              <Route path="*" element={<Navigate to="/HomePage" />} />
+            </Routes>
+          </ScrollToTop>
         </AnimatePresence>
         <Footer />
       </NumbersContext.Provider>

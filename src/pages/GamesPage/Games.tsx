@@ -19,7 +19,7 @@ const FilmsTemplate = () => {
     if (filmPlate.length === 0) {
       setGame(4);
     }
-  }, [game]);
+  }, []);
 
   const options = [
     { value: 1, label: t("gamesPage.select.eliminationCards") },
