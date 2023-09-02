@@ -7,8 +7,9 @@ import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header/Header";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Footer from "./components/footer/Footer";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import ScrollToTop from "./router/ScrollToTop";
+import { CircularProgress } from "@mui/material";
 
 function App() {
   const [allFilms, setAllFilms] = useLocalStorage([], "allFilms");
@@ -35,7 +36,25 @@ function App() {
               {routes.map((route) => (
                 <Route
                   key={route.path}
-                  element={<route.element />}
+                  element={
+                    <Suspense
+                      fallback={
+                        <p
+                          style={{
+                            color: "rgb(73, 127, 145)",
+                            height: "100vh",
+                            width: "100vw",
+                            textAlign: "center",
+                          }}
+                        >
+                          {" "}
+                          <CircularProgress sx={{ mt: "150px" }} />
+                        </p>
+                      }
+                    >
+                      <route.element />
+                    </Suspense>
+                  }
                   path={route.path}
                 />
               ))}

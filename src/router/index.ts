@@ -1,7 +1,7 @@
-import { createRef } from "react";
-import FilmContainer from "../pages/AddingPage/Adding";
-import FilmsTemplate from "../pages/GamesPage/Games";
-import StartPage from "../pages/StartPage/StartPage";
+import { createRef, lazy } from "react";
+const FilmContainer = lazy(() => import("../pages/AddingPage/Adding"));
+const FilmsTemplate = lazy(() => import("../pages/GamesPage/Games"));
+const StartPage = lazy(() => import("../pages/StartPage/StartPage"));
 
 export const routes = [
   { path: "/addingFilms", element: FilmContainer, nodeRef: createRef() },
