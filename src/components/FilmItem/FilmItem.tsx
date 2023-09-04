@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import { IFilm } from "../../models/IFilm";
 import item from "./_FilmItem.module.scss";
 import { Fab } from "@mui/material";

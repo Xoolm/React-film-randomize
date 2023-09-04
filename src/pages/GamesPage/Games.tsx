@@ -9,12 +9,14 @@ import { NumbersContext } from "../../context";
 import Select from "react-select";
 import "../../style/_custom-select-games.scss";
 import { useTranslation } from "react-i18next";
+import { IFilm } from "../../models/IFilm";
 
 const FilmsTemplate = () => {
   const { t } = useTranslation();
   const [game, setGame] = useState<any>(0);
-  const { filmPlate } = useContext(NumbersContext);
-  const [winner, setWinner] = useState(false);
+  const { filmPlate, setAllFilms, allFilms } = useContext(NumbersContext);
+  const [winnerBool, setWinnerBool] = useState(false);
+  const [winner, setWinner] = useState<IFilm>();
   useEffect(() => {
     if (filmPlate.length === 0) {
       setGame(4);
@@ -28,12 +30,64 @@ const FilmsTemplate = () => {
   ];
 
   useEffect(() => {
-    if (filmPlate?.length === 1) {
-      setTimeout(() => {
-        setWinner(true);
-      }, 3500);
+    if (game.value === 2) {
+      if (filmPlate?.length === 1) {
+        setTimeout(() => {
+          setWinnerBool(true);
+          filmPlate.map((film) => {
+            setWinner(film);
+            const updateFilms = allFilms.filter((item) => item.id !== film.id);
+            const newAllFilms = updateFilms.map((film) => {
+              if (film.value === 10) {
+                return {
+                  ...film,
+                  value: 10,
+                  optionSize: 1,
+                  quantity: 10,
+                };
+              } else {
+                return {
+                  ...film,
+                  value: film.value + 1,
+                  optionSize: film.optionSize - 1,
+                  quantity: Math.floor(100 - film.value * 10),
+                };
+              }
+            });
+            setAllFilms(newAllFilms);
+          });
+        }, 0);
+      }
+    } else {
+      if (filmPlate?.length === 1) {
+        setTimeout(() => {
+          setWinnerBool(true);
+          filmPlate.map((film) => {
+            setWinner(film);
+            const updateFilms = allFilms.filter((item) => item.id !== film.id);
+            const newAllFilms = updateFilms.map((film) => {
+              if (film.value === 10) {
+                return {
+                  ...film,
+                  value: 10,
+                  optionSize: 1,
+                  quantity: 10,
+                };
+              } else {
+                return {
+                  ...film,
+                  value: film.value + 1,
+                  optionSize: film.optionSize - 1,
+                  quantity: Math.floor(100 - film.value * 10),
+                };
+              }
+            });
+            setAllFilms(newAllFilms);
+          });
+        }, 3500);
+      }
     }
-  }, [filmPlate]);
+  }, [allFilms, filmPlate]);
 
   return (
     <AnimatedPage>
@@ -81,10 +135,18 @@ const FilmsTemplate = () => {
                 </h3>
               ) : null}
             </div>
-            {game.value === 1 ? <RandomCardOutWrapp winner={winner} /> : null}
-            {game.value === 3 ? <MysteryCardWrapp winner={winner} /> : null}
+            {game.value === 1 ? (
+              <RandomCardOutWrapp winner={winner} winnerBool={winnerBool} />
+            ) : null}
+            {game.value === 3 ? (
+              <MysteryCardWrapp winner={winner} winnerBool={winnerBool} />
+            ) : null}
             {game.value === 2 ? (
-              <RandomWheelWrapp winner={winner} setWinner={setWinner} />
+              <RandomWheelWrapp
+                winner={winner}
+                winnerBool={winnerBool}
+                setWinnerBool={setWinnerBool}
+              />
             ) : null}
           </div>
         </Container>

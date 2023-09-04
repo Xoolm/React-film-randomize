@@ -7,10 +7,14 @@ import FilmWinner from "../../FilmWinner/FilmWinner";
 import { useShuffle } from "../../../hooks/useShuffle";
 
 interface MysteryCardOutWrappProps {
-  winner: boolean;
+  winnerBool: boolean;
+  winner?: IFilm;
 }
 
-const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({ winner }) => {
+const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({
+  winnerBool,
+  winner,
+}) => {
   const { allFilms, filmPlate, setFilmPlate } = useContext(NumbersContext);
   const [mysteryCard, setMysteryCard] = useState<IFilm[]>();
   const shuffleAarray = [...allFilms];
@@ -23,10 +27,9 @@ const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({ winner }) => {
 
   return (
     <>
-      {winner ? (
+      {winnerBool ? (
         <div className={Mystery.winnerWrapper}>
-          {filmPlate &&
-            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+          <FilmWinner winner={winner} />
         </div>
       ) : (
         <div className={Mystery.mysteryCardWrapp}>

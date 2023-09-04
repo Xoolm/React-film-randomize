@@ -6,15 +6,22 @@ import Wheel from "./_RandomWheelWrapp.module.scss";
 import { Button } from "@mui/material";
 import FilmWinner from "../../FilmWinner/FilmWinner";
 import { useTranslation } from "react-i18next";
+import { IFilm } from "../../../models/IFilm";
 
 interface RandomWheelProps {
-  winner: boolean;
-  setWinner: (arg0: boolean) => void;
+  winner?: IFilm;
+  winnerBool: boolean;
+  setWinnerBool: (arg0: boolean) => void;
 }
 
-const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
+const RandomWheelWrapp: FC<RandomWheelProps> = ({
+  winner,
+  winnerBool,
+  setWinnerBool,
+}) => {
   const { t } = useTranslation();
-  const { numbers, filmPlate, setFilmPlate } = useContext(NumbersContext);
+  const { numbers, filmPlate, setFilmPlate, setAllFilms, allFilms } =
+    useContext(NumbersContext);
   const [mustSpin, setMustSpin] = useState(false);
   const [idFIlmWinner, setIdFIlmWinner] = useState<any>();
   const [prizeNumber, setPrizeNumber] = useState<any>();
@@ -45,16 +52,18 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({ winner, setWinner }) => {
 
   useEffect(() => {
     if (filmPlate?.length === 1) {
-      setWinner(true);
+      setWinnerBool(true);
+      // filmPlate.map((film) => {
+      //   setAllFilms(allFilms.filter((item) => item.id !== film.id));
+      // });
     }
   }, [filmPlate]);
 
   return (
     <>
-      {winner ? (
+      {winnerBool ? (
         <div className={Wheel.randomWheelWrapp}>
-          {filmPlate &&
-            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+          <FilmWinner winner={winner} />
         </div>
       ) : (
         <div className={Wheel.wheelWrapper}>

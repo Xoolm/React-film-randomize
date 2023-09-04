@@ -9,10 +9,14 @@ import FilmWinner from "../../FilmWinner/FilmWinner";
 import { useTranslation } from "react-i18next";
 
 interface RandomCardOutWrappProps {
-  winner: boolean;
+  winnerBool: boolean;
+  winner?: IFilm;
 }
 
-const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
+const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({
+  winnerBool,
+  winner,
+}) => {
   const { t } = useTranslation();
   const { allFilms, numbers, filmPlate, setFilmPlate } =
     useContext(NumbersContext);
@@ -32,10 +36,9 @@ const RandomCardOutWrapp: FC<RandomCardOutWrappProps> = ({ winner }) => {
 
   return (
     <>
-      {winner ? (
+      {winnerBool ? (
         <div className={CardOut.winnerWrapper}>
-          {filmPlate &&
-            filmPlate.map((film) => <FilmWinner key={film.id} film={film} />)}
+          <FilmWinner winner={winner} />
         </div>
       ) : (
         <div className={CardOut.randomCardWrapp}>

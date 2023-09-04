@@ -45,6 +45,9 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
     setTitle("");
     setValue(1);
   };
+
+  console.log(allFilms);
+
   const nodeRef = useRef(null);
 
   const handlePlus = () => {
@@ -99,6 +102,7 @@ const AddFilmForm: FC<AddFilmFormProps> = ({ user }) => {
               </Fab>
             </div>
             <Fab
+              id="AAA"
               onClick={handleCreateFilm}
               className={addForm.success}
               size="small"
