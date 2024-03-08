@@ -1,0 +1,280 @@
+@import "../../style//mixin_font-size";
+.enterActive {
+  opacity: 0;
+}
+.enterDone {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+.exitActive {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+.filmWrapp {
+  background: rgba(2, 40, 81, 0.5);
+  border-radius: 20px;
+  padding: 0px 15px 0px 0;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  width: 80%;
+  .FormWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .FormWrapper__form {
+      display: flex;
+      .inputTitle {
+        border: none;
+        animation: neon-1 0.09s ease-in-out infinite alternate;
+        margin: 10px 0;
+        background: #023770;
+        border-radius: 20px;
+        padding: 0px 85px 0px 10px;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        max-width: 291px;
+        min-width: 291px;
+        color: #7dddf9;
+        @include adaptiv-font(16, 14);
+        font-weight: 400;
+        &::placeholder {
+          color: #7dddf9;
+          font-size: 19px;
+          font-weight: 400;
+          opacity: 0.5;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      @media (max-width: 450px) {
+        .inputTitle {
+          min-width: 100px;
+          padding: 0px 30px 0px 10px;
+        }
+      }
+      .counterWrapp {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: -92px;
+        min-width: 90px;
+        .counterWrapp__plus {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+        .counterWrapp__display {
+          color: white;
+          font-size: 20px;
+          user-select: none;
+        }
+        .counterWrapp__minus {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+      }
+      .formButtons {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        .FormWrapper__edit {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          margin-right: 10px;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+          .edit__icon {
+            color: #022851;
+          }
+        }
+        .success {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          z-index: 0;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+        .FormWrapper__close {
+          width: 27px;
+          height: 27px;
+          min-height: 0px;
+          background-color: #93b4ca;
+          opacity: 0.5;
+          transition: 0.5s;
+          scale: 0.9;
+          &:hover {
+            scale: 1;
+            background-color: #93b4ca;
+            opacity: 1;
+            box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+              0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+              0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+              inset 0 0 1.3rem rgb(48, 163, 186);
+          }
+        }
+      }
+    }
+  }
+  .chanceWrapp {
+    display: flex;
+    justify-content: center;
+    border: 2px solid white;
+    padding: 14px 0px;
+    border-radius: 10px;
+    margin-right: -90px;
+    user-select: none;
+    width: 80px;
+    .filmChance,
+    .filmFactor {
+      color: white;
+    }
+  }
+  .filmWrapp__value {
+    background-color: #93b4ca;
+    border-radius: 50%;
+    padding: 12px 17px;
+  }
+  .filmWrapp__title {
+    padding: 5px 0;
+    color: #7dddf9;
+    padding-left: 10px;
+    width: 70%;
+    max-width: 220px;
+    @include adaptiv-font(16, 14);
+    font-weight: 400;
+  }
+  .filmWrapp__chance {
+    margin-left: auto;
+    margin-right: 5px;
+  }
+  .filmWrapp__remove {
+    z-index: 0;
+    width: 27px;
+    margin-right: 10px;
+    height: 27px;
+    min-height: 0px;
+    background-color: #93b4ca;
+    opacity: 0.5;
+    transition: 0.5s;
+    scale: 0.9;
+    &:hover {
+      scale: 1;
+      background-color: #93b4ca;
+      opacity: 1;
+      box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+        0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+        0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+        inset 0 0 1.3rem rgb(48, 163, 186);
+    }
+    .filmWrapp__remove__icon {
+      color: #022851;
+      width: 18px;
+    }
+  }
+  @media (max-width: 450px) {
+    .chanceWrapp {
+      padding: 12px 0px;
+      width: 70px;
+    }
+  }
+  .edit {
+    width: 27px;
+    height: 27px;
+    min-height: 0px;
+    margin-left: auto;
+    float: right;
+    margin-right: 10px;
+    z-index: 0;
+    background-color: #93b4ca;
+    opacity: 0.5;
+    transition: 0.5s;
+    scale: 0.9;
+    &:hover {
+      scale: 1;
+      background-color: #93b4ca;
+      opacity: 1;
+      box-shadow: 0 0 1px rgba(202, 228, 225, 0.98),
+        0 0 4px rgba(48, 163, 186, 0.42), 0 0 3px rgba(48, 163, 186, 0.58),
+        0 0 2px rgba(48, 163, 186, 0.84), 0 0 5px rgba(48, 163, 186, 0.88),
+        inset 0 0 1.3rem rgb(48, 163, 186);
+    }
+    .filmWrapp__edit__icon {
+      color: #022851;
+      width: 18px;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .filmWrapp {
+    width: 75%;
+  }
+}
+@keyframes neon-1 {
+  from {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.92),
+      0 0 5px rgba(48, 163, 186, 0.34), 0 0 6px rgba(48, 163, 186, 0.52),
+      0 0 2px rgba(48, 163, 186, 0.92), 0 0 14px rgba(48, 163, 186, 0.78),
+      0 0 9px rgba(48, 163, 186, 0.92), inset 0 0 1.3rem rgb(48, 163, 186);
+  }
+  to {
+    box-shadow: 0 0 3px rgba(202, 228, 225, 0.98),
+      0 0 7px rgba(48, 163, 186, 0.42), 0 0 5px rgba(48, 163, 186, 0.58),
+      0 0 4px rgba(48, 163, 186, 0.84), 0 0 12px rgba(48, 163, 186, 0.88),
+      inset 0 0 1.3rem rgb(48, 163, 186);
+  }
+}

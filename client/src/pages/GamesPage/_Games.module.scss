@@ -1,0 +1,33 @@
+.FilmsChoisePage__background {
+  background-image: url("./image/Choise_Films_background.svg");
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .select {
+    z-index: 100;
+    margin: 10px 0 30px;
+  }
+  .templateWrapp {
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    width: 100%;
+    .alert {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      font-size: 30px;
+      color: white;
+      text-align: center;
+    }
+    .filmsWrapp {
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+  }
+}
