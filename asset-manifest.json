@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/React-film-randomize/static/css/main.dfd915cd.css",
-    "main.js": "/React-film-randomize/static/js/main.539d1a8b.js",
+    "main.js": "/React-film-randomize/static/js/main.d2622bb5.js",
     "static/css/383.b998e75f.chunk.css": "/React-film-randomize/static/css/383.b998e75f.chunk.css",
     "static/js/383.05d151b7.chunk.js": "/React-film-randomize/static/js/383.05d151b7.chunk.js",
     "static/css/215.c9327847.chunk.css": "/React-film-randomize/static/css/215.c9327847.chunk.css",
     "static/js/215.14f2c64b.chunk.js": "/React-film-randomize/static/js/215.14f2c64b.chunk.js",
-    "static/css/609.1669ec19.chunk.css": "/React-film-randomize/static/css/609.1669ec19.chunk.css",
+    "static/css/609.e43c66a0.chunk.css": "/React-film-randomize/static/css/609.e43c66a0.chunk.css",
     "static/js/609.56b74379.chunk.js": "/React-film-randomize/static/js/609.56b74379.chunk.js",
-    "static/css/144.1669ec19.chunk.css": "/React-film-randomize/static/css/144.1669ec19.chunk.css",
+    "static/css/144.e43c66a0.chunk.css": "/React-film-randomize/static/css/144.e43c66a0.chunk.css",
     "static/js/144.5b2049e0.chunk.js": "/React-film-randomize/static/js/144.5b2049e0.chunk.js",
     "static/css/172.2c7c99a5.chunk.css": "/React-film-randomize/static/css/172.2c7c99a5.chunk.css",
     "static/js/172.1b481443.chunk.js": "/React-film-randomize/static/js/172.1b481443.chunk.js",
@@ -26,14 +26,14 @@
     "static/media/getFetch.cjs": "/React-film-randomize/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/ru.svg": "/React-film-randomize/static/media/ru.f760036294e1fff52a9a88663d0d7a46.svg",
     "main.dfd915cd.css.map": "/React-film-randomize/static/css/main.dfd915cd.css.map",
-    "main.539d1a8b.js.map": "/React-film-randomize/static/js/main.539d1a8b.js.map",
+    "main.d2622bb5.js.map": "/React-film-randomize/static/js/main.d2622bb5.js.map",
     "383.b998e75f.chunk.css.map": "/React-film-randomize/static/css/383.b998e75f.chunk.css.map",
     "383.05d151b7.chunk.js.map": "/React-film-randomize/static/js/383.05d151b7.chunk.js.map",
     "215.c9327847.chunk.css.map": "/React-film-randomize/static/css/215.c9327847.chunk.css.map",
     "215.14f2c64b.chunk.js.map": "/React-film-randomize/static/js/215.14f2c64b.chunk.js.map",
-    "609.1669ec19.chunk.css.map": "/React-film-randomize/static/css/609.1669ec19.chunk.css.map",
+    "609.e43c66a0.chunk.css.map": "/React-film-randomize/static/css/609.e43c66a0.chunk.css.map",
     "609.56b74379.chunk.js.map": "/React-film-randomize/static/js/609.56b74379.chunk.js.map",
-    "144.1669ec19.chunk.css.map": "/React-film-randomize/static/css/144.1669ec19.chunk.css.map",
+    "144.e43c66a0.chunk.css.map": "/React-film-randomize/static/css/144.e43c66a0.chunk.css.map",
     "144.5b2049e0.chunk.js.map": "/React-film-randomize/static/js/144.5b2049e0.chunk.js.map",
     "172.2c7c99a5.chunk.css.map": "/React-film-randomize/static/css/172.2c7c99a5.chunk.css.map",
     "172.1b481443.chunk.js.map": "/React-film-randomize/static/js/172.1b481443.chunk.js.map",
@@ -43,6 +43,6 @@
   },
   "entrypoints": [
     "static/css/main.dfd915cd.css",
-    "static/js/main.539d1a8b.js"
+    "static/js/main.d2622bb5.js"
   ]
 }
