@@ -41,12 +41,12 @@ const RandomWheelWrapp: FC<RandomWheelProps> = ({
     await getRandom(numbers?.length);
     setMustSpin(true);
 
-    // setTimeout(() => {
-    //   audio.play();
-    // }, 1000);
-    // setTimeout(() => {
-    //   audio.pause();
-    // }, 12000);
+    setTimeout(() => {
+      audio.play();
+    }, 1000);
+    setTimeout(() => {
+      audio.pause();
+    }, 12000);
   };
 
   useEffect(() => {
