@@ -1,11 +1,11 @@
 import "./_Header.scss";
 import { useEffect, useState } from "react";
-import Logo from "./image/logomovie.svg";
-import FilmReel from "./image/film_reel.svg";
-import NavBar from "../navBar/NavBar";
+import Logo from "../../images/Header/logomovie.svg";
+import FilmReel from "../../images/Header/film_reel.svg";
+import NavBar from "./components/NavBar";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as RUS } from "../navBar/img/ru.svg";
-import { ReactComponent as EN } from "../navBar/img/us.svg";
+import { ReactComponent as RUS } from "../../images/Header/ru.svg";
+import { ReactComponent as EN } from "../../images/Header/us.svg";
 import "../../style/_Language-change-select.scss";
 import {
   ListItemIcon,
@@ -42,10 +42,10 @@ function Header() {
         className={menuActive ? "nav-icon3 open" : "nav-icon3"}
         onClick={() => setMenuActive(!menuActive)}
       >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span className="burgerLine"></span>
+        <span className="burgerLine"></span>
+        <span className="burgerLine"></span>
+        <span className="burgerLine"></span>
       </div>
       <img className="logo2" src={FilmReel} alt="logo2" width="260" />
       <Select

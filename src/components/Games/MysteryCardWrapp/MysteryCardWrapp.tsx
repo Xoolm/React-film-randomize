@@ -34,8 +34,13 @@ const MysteryCardWrapp: FC<MysteryCardOutWrappProps> = ({
       ) : (
         <div className={Mystery.mysteryCardWrapp}>
           {mysteryCard &&
-            mysteryCard.map((film) => (
-              <MysteryCard onDelete={handleDelete} key={film.id} film={film} />
+            mysteryCard.map((film, index) => (
+              <MysteryCard
+                onDelete={handleDelete}
+                key={film.id}
+                film={film}
+                index={index}
+              />
             ))}
         </div>
       )}

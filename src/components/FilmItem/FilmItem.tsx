@@ -51,7 +51,6 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
     setAllFilms(updateFilms);
     setEditInput(false);
   };
-  console.log(film);
 
   const chance = Math.round((film.quantity / numbers.length) * 100);
 

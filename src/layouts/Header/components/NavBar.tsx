@@ -13,10 +13,9 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as RUS } from "./img/ru.svg";
-import { ReactComponent as EN } from "./img/us.svg";
-import "../../style/_Language-change-select.scss";
-import { useParams } from "react-router-dom";
+import { ReactComponent as RUS } from "../../../images/Header/ru.svg";
+import { ReactComponent as EN } from "../../../images/Header/us.svg";
+import "../../../style/_Language-change-select.scss";
 
 interface NavBarProps {
   active: boolean;

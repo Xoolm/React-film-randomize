@@ -29,8 +29,6 @@ const FilmContainer = () => {
     setAllFilms(allFilms.filter((film) => film.userID !== id));
   };
 
-  console.log(users);
-
   const { t } = useTranslation();
   return (
     <AnimatedPage>

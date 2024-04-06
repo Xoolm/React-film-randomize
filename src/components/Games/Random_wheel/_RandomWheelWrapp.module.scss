@@ -5,61 +5,129 @@
   width: 100%;
   height: 80vh;
 }
-.wheelWrapper {
+.wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 800px;
-  height: 800px;
-  margin: 0 auto 0;
-  > div {
-    height: 100%;
-    width: 100%;
-    max-height: unset;
-    max-width: unset;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1023px) {
+    flex-direction: column-reverse;
+    row-gap: 2rem;
   }
-  .addWinner {
-    float: right;
-    margin: 50px 0 0 0;
-    color: white;
-    border-radius: 20px;
-    box-shadow: 0 0 1px rgba(223, 202, 228, 0.98),
-      0 0 4px rgba(181, 48, 186, 0.42), 0 0 3px rgba(158, 48, 186, 0.58),
-      0 0 2px rgba(174, 48, 186, 0.84), 0 0 5px rgba(174, 48, 186, 0.88),
-      inset 0 0 1.3rem rgb(147, 48, 186);
-    background: none;
-    border: none;
-    padding: 20px 30px;
-    border: solid 1px pink;
+  .outFilmsList {
+    // transition: 1s;
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    flex-direction: column;
+    list-style-type: none;
+    box-shadow: 0 0 0.1rem rgb(255, 255, 255), 0 0 0.2rem rgb(255, 255, 255),
+      0 0 0.3rem rgb(48, 163, 186), 0 0 0.8rem rgb(48, 163, 186),
+      0 0 1rem rgb(48, 163, 186), inset 0 0 1.3rem rgb(48, 163, 186);
+    animation: neon-1 0.09s ease-in-out infinite alternate,
+      neon-3 5s steps(1, start) infinite reverse;
+    @media (min-width: 1600px) {
+      left: -10rem;
+    }
+    @media (max-width: 1023px) {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .titleOutFilms {
+      color: #ec8dc7;
+    }
+    .listWrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      row-gap: 0.5rem;
+      // transition: 1s;
+      .outFilmItem {
+        animation: test 1s ease-in-out;
+        opacity: 0.6;
+        font-size: 14px;
+        color: rgb(255, 255, 255);
+        border-bottom: 1px solid #ec8dc7;
+        &:nth-last-child(-n + 1) {
+          opacity: 1; /* Непрозрачность последнего элемента списка */
+        }
+      }
+    }
   }
-}
-@media (max-width: 800px) {
   .wheelWrapper {
-    width: 650px;
-    height: 650px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0;
+    > div {
+      width: 90vw;
+      height: 90vw;
+      max-width: 900px;
+      max-height: 900px;
+      @media (max-height: 1000px) {
+        max-width: 600px;
+        max-height: 600px;
+      }
+      > div {
+      }
+    }
     .addWinner {
-      float: none;
-      margin: 40px auto 0;
+      float: right;
+      margin: 50px 0 0 0;
+      color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 1px rgba(223, 202, 228, 0.98),
+        0 0 4px rgba(181, 48, 186, 0.42), 0 0 3px rgba(158, 48, 186, 0.58),
+        0 0 2px rgba(174, 48, 186, 0.84), 0 0 5px rgba(174, 48, 186, 0.88),
+        inset 0 0 1.3rem rgb(147, 48, 186);
+      background: none;
+      border: none;
+      padding: 20px 30px;
+      border: solid 1px pink;
     }
   }
 }
-@media (max-width: 650px) {
-  .wheelWrapper {
-    width: 550px;
-    height: 550px;
+@keyframes test {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
-@media (max-width: 550px) {
-  .wheelWrapper {
-    width: 450px;
-    height: 450px;
-  }
-}
-@media (max-width: 450px) {
-  .wheelWrapper {
-    width: 320px;
-    height: 320px;
-  }
-}
+
+// @media (max-width: 800px) {
+//   .wheelWrapper {
+//     width: 650px;
+//     height: 650px;
+//     .addWinner {
+//       float: none;
+//       margin: 40px auto 0;
+//     }
+//   }
+// }
+// @media (max-width: 650px) {
+//   .wheelWrapper {
+//     width: 550px;
+//     height: 550px;
+//   }
+// }
+// @media (max-width: 550px) {
+//   .wheelWrapper {
+//     width: 450px;
+//     height: 450px;
+//   }
+// }
+// @media (max-width: 450px) {
+//   .wheelWrapper {
+//     width: 320px;
+//     height: 320px;
+//   }
+// }
 // @media (max-width: 400px) {
 //   .wheelWrapper {
 //     width: 450px;
